@@ -1,3 +1,34 @@
 FORMAT: 1A
 
 # Odbav.to
+
+## jwt/token [/jwt/token]
+
+### POST [POST]
++ Request
+    + Attributes (JWT grant request)
+
++ Response 200 (application/json)
+    + Attributes (JWT valid response)
+
+## protected-test [/protected-test]
+### GET [GET]
++ Request
+    + Headers
+        X-Authentication: Bearer JWT
+
++ Response 200 (application/json)
+    + Attributes (Server response)
+
+# Data Structures
+## JWT grant request (object)
++ `username` (string, required)
++ `password` (string, required)
+
+## JWT valid response (object)
++ `data`:
+    + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string, required) - valid JWT
+
+
+## Server response (object)
++ status: ok (string, required)
