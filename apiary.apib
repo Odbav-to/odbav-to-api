@@ -167,7 +167,6 @@ FORMAT: 1A
         + `data` (User with id)
             + `role` (ACL role with id)
             
-
 + Response 400 (application/json)
     + Attributes (400 Error response)
 
@@ -250,6 +249,9 @@ FORMAT: 1A
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Edit event details [PUT]
 + Request (application/json)
@@ -262,7 +264,9 @@ FORMAT: 1A
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
-
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Delete event [DELETE]
 + Request (application/json)
@@ -286,6 +290,9 @@ FORMAT: 1A
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Create order [POST]
 + Request (application/json)
@@ -301,6 +308,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 
 ## Ticket variants [/events/{eventId}/ticket-variants]
@@ -311,6 +321,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Create new ticket variant [POST]
 + Request (application/json)
@@ -326,6 +339,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 
 ## Tickets [/events/{eventId}/tickets]
@@ -336,6 +352,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Create new ticket [POST]
 + Request (application/json)
@@ -351,6 +370,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 
 ## Order detail [/orders/{orderId}]
@@ -361,6 +383,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Edit order [PUT]
 + Request (application/json)
@@ -376,6 +401,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Delete order [DELETE]
 + Request (application/json)
@@ -441,6 +469,9 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ### Edit ticket [PUT]
 + Request (application/json)
@@ -585,3 +616,4 @@ FORMAT: 1A
 
 ## 404 Error response (object)
 + errors (array[Error])
+4
