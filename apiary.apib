@@ -2,33 +2,586 @@ FORMAT: 1A
 
 # Odbav.to
 
-## jwt/token [/jwt/token]
-
-### POST [POST]
-+ Request
-    + Attributes (JWT grant request)
-
-+ Response 200 (application/json)
-    + Attributes (JWT valid response)
-
-## protected-test [/protected-test]
-### GET [GET]
-+ Request
-    + Headers
-        X-Authentication: Bearer JWT
+## Login [/login]
+### Exchange credentials for access token [POST]
++ Request (application/json)
+    + Attributes (object)
+        + data (object)
+            + `email`: `info@odbav.to` (string, required)
+            + `password`: `secretpassword` (string, required)
 
 + Response 200 (application/json)
-    + Attributes (Server response)
+    + Attributes (object)
+        + `data` (object)
+            + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string)
+            + `user` (User with client and role)
+                    
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
+
+## Forgotten password [/forgotten-password]
+### Request new password [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `email`: `info@odbav.to`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
+
+## Registration [/sign-up]
+### Create new client and associated user [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `licenceType`: `a12b0231-be48-4d40-a69d-d521c159dae9`
+            + `client` (Client)
+            + `user` (User)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `licence` (Licence with id)
+            + `client` (Client with id)
+            + `user` (User with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
+## Translations [/translations]
+### List of all translations [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `translations` (array[Translation])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Licence types [/licence-types]
+### List of all licence types [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (array[Licence type with details])
+
+## Verify email [/verify-email]
+### Verify email [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `email`: `info@odbav.to`
+            + `hash`: `4b68e41535b88a57870adfb6b8e99a4c`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
+
+## Resend verification email [/resend-verification-email]
+### Resend verification email [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `email`: `info@odbav.to`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
+
+## Change password [/change-password]
+### Change password [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            `oldPassword`: `secretpassword`
+            `newPassword`: `secretpassword`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Logged user [/me]
+### Retrieve informations about itself [GET]
++ Request (application/json)
+        
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (User with client and role)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+### Update user details [PUT]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (User)
+            
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (User)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Users [/users]
+### List all users of same client [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (array[User with id, User with id])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Add new user to a client [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (User)
+            + `roleId`: `47f89aa8-539e-460b-aa86-3de11249a71c`
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (User with id)
+            + `role` (ACL role with id)
+            
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+## Check in [/check-in]
+### Check code for check in [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `code`: `c084806e45e5` (string, required)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Check out [/check-out]
+### Check code for check out [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `code`: `c084806e45e5` (string, required)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Events [/events]
+### List events [GET]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (object)
+            + `code`: `c084806e45e5` (string, required)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (array[Event with id])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Create new event [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Event)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Event with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Event detail [/events/{eventId}]
+### Event detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (Event with id)
+        
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Edit event details [PUT]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Event)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Event with id)
+        
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+### Delete event [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)
+
+
+## Orders [/events/{eventId}/orders]
+### List orders [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (array[Order with id])
+        
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Create order [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Order)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Order with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Ticket variants [/events/{eventId}/ticket-variants]
+### List event ticket variants [GET]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (array[Ticket variant with id])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Create new ticket variant [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Ticket variant)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket variant with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Tickets [/events/{eventId}/tickets]
+### List event tickets [GET]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (array[Ticket with id])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Create new ticket [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Ticket)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+
+## Order detail [/orders/{orderId}]
+### Order detail [GET]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Order with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Edit order [PUT]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Order)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Order with id)
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Delete order [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)
+
+
+## Ticket variant detail [/ticket-variants/{ticketVariantId}]
+### Ticket variant detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `data` (Ticket variant with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit ticket variant [PUT]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Ticket variant)
+
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket variant with id)    
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Delete ticket variant [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)
+
+
+## Ticket detail [/tickets/{ticketId}]
+### Ticket detail [GET]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Ticket with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+### Edit ticket [PUT]
++ Request (application/json)
+    + Attributes (object)
+        + `data` (Ticket)
+        
++ Response 201 (application/json)
+    + Attributes (object)
+        + `data` (Ticket with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Delete ticket [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)
+
 
 # Data Structures
-## JWT grant request (object)
-+ `username` (string, required)
-+ `password` (string, required)
+## ACL role (object)
++ `name`: `Administrators`
++ `privileges` (array)
 
-## JWT valid response (object)
-+ `data`:
-    + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string, required) - valid JWT
+## ACL role with id (ACL role)
++ `id`: `47f89aa8-539e-460b-aa86-3de11249a71c`
 
+## Licence type (object)
++ `id`: `962754c0-1201-4cd5-812f-ef616a442445`
++ `name`: `Basic`
 
-## Server response (object)
-+ status: ok (string, required)
+## Licence type with details (Licence type)
++ `prices` (array[Price])
+
+## Price (object)
++ `amount`: `100` (number)
++ `currency`: `CZK`
+
+## Licence (object)
++ `validUntil`: `2018-01-01 23:00:00`
++ `type` (Licence type)
+
+## Licence with id (Licence)
++ `id`: `a12b0231-be48-4d40-a69d-d521c159dae9`
+
+## User (object)
++ `email`: info@odbav.to
++ `firstName`: John
++ `lastName`: Doe
+
+## User with id (User)
++ `id`: `05f5b1a5-38be-4190-90cd-c084806e45e5`
+
+## User with client and role (User with id)
++ `client` (Client with licence)
++ `role` (ACL role with id)
+
+## Client (object)
++ `name`: Odbav.to
++ `billingInfo` (Billing info)
+
+## Client with id (Client)
++ `id`: `aa32a9d3-9aaf-4b73-96ff-6da9cbdc8141`
+
+## Client with licence (Client with id)
++ `licence` (Licence with id)
+
+## Billing info (object)
++ `subject`: `Odbav.to`
++ `subjectId`: `12345`
++ `subjectVatId`: `CZ12345`
++ `street`: `Anonymous 123`
++ `city`: `Prague`
++ `country`: `Czech Republic`
++ `postalCode`: `11000`
++ `iban`: `CZ6508000000192000145399`
+
+## Translation (object)
++ `key`: `hello-world`
++ `translation`: `Lorem ipsum dolor sit amet`
+
+## Guest (User)
++ `companyName`: `Odbav.to`
++ `companyId`: `12345`
++ `companyVatId`: `CZ12345`
++ `street`: `Anonymous 123`
++ `city`: `Prague`
++ `country`: `Czech Republic`
++ `postalCode`: `11000`
+
+## Ticket (object)
++ `code`: `c084806e45e5`
++ `event`
+    + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba`
+    + `name`: `Some event`
+    + `variant`
+        + `id`: `5f470e02-3442-488a-9c2c-804e16520e44`
+        + `name`: `Some ticket variant`
++ `guest` (Guest)
+
+## Ticket with id (Ticket)
++ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea`
+
+## Event (object)
+
+## Event with id (Event)
+
+## Order (object)
+
+## Order with id (Order)
+
+## Ticket variant (object)
+
+## Ticket variant with id (Ticket variant)
+
+## Error (object)
++ `title`: `Short title of the problem`
++ `detail`: `I guess something went wrong, description of error goes here`
+
+## 400 Error (Error)
++ source (object)
+    + `pointer`
+    + `parameter`
+
+## 400 Error response (object)
++ errors (array[400 Error, 400 Error])
+
+## 401 Error response (object)
++ errors (array[Error])
+
+## 404 Error response (object)
++ errors (array[Error])
