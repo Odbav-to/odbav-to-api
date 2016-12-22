@@ -6,15 +6,13 @@ FORMAT: 1A
 ### Exchange credentials for access token [POST]
 + Request (application/json)
     + Attributes (object)
-        + data (object)
-            + `email`: `info@odbav.to` (string, required)
-            + `password`: `secretpassword` (string, required)
+        + `email`: `info@odbav.to` (string, required)
+        + `password`: `secretpassword` (string, required)
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string)
-            + `user` (User with client and role)
+        + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string)
+        + `user` (User with client)
                     
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -24,8 +22,7 @@ FORMAT: 1A
 ### Request new password [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `email`: `info@odbav.to`
+        + `email`: `info@odbav.to`
 
 + Response 204 (application/json)
 
@@ -37,17 +34,16 @@ FORMAT: 1A
 ### Create new client and associated user [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `licenceType`: `a12b0231-be48-4d40-a69d-d521c159dae9`
-            + `client` (Client)
-            + `user` (User)
+        + `licenceType`: `a12b0231-be48-4d40-a69d-d521c159dae9`
+        + `client` (Client)
+        + `user` (User)
+            + `password`: `secretpassword`
 
 + Response 201 (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `licence` (Licence with id)
-            + `client` (Client with id)
-            + `user` (User with id)
+        + `licence` (Licence with id)
+        + `client` (Client with id)
+        + `user` (User with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -58,8 +54,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `translations` (array[Translation])
+        + `translations` (array[Translation])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -71,15 +66,14 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `data` (array[Licence type with details])
+        + `types` (array[Licence type with details])
 
 ## Verify email [/verify-email]
 ### Verify email [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `email`: `info@odbav.to`
-            + `hash`: `4b68e41535b88a57870adfb6b8e99a4c`
+        + `email`: `info@odbav.to`
+        + `hash`: `4b68e41535b88a57870adfb6b8e99a4c`
 
 + Response 204 (application/json)
 
@@ -91,22 +85,19 @@ FORMAT: 1A
 ### Resend verification email [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `email`: `info@odbav.to`
+        + `email`: `info@odbav.to`
 
 + Response 204 (application/json)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
 
-
 ## Change password [/change-password]
 ### Change password [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            `oldPassword`: `secretpassword`
-            `newPassword`: `secretpassword`
+        + `oldPassword`: `secretpassword`
+        + `newPassword`: `secretpassword`
 
 + Response 204 (application/json)
 
@@ -122,8 +113,7 @@ FORMAT: 1A
 + Request (application/json)
         
 + Response 200 (application/json)
-    + Attributes (object)
-        + `data` (User with client and role)
+    + Attributes (User with client)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -131,12 +121,10 @@ FORMAT: 1A
 
 ### Update user details [PUT]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (User)
+    + Attributes (User)
             
 + Response 200 (application/json)
-    + Attributes (object)
-        + `data` (User)
+    + Attributes (User)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -151,21 +139,18 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `data` (array[User with id, User with id])
+        + `users` (array[User with id, User with id])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
 ### Add new user to a client [POST]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (User)
-            + `roleId`: `47f89aa8-539e-460b-aa86-3de11249a71c`
+    + Attributes (User)
+        + `password` (nullable) - password will be generated automatically if null
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (User with id)
-            + `role` (ACL role with id)
+    + Attributes (User with id)
             
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -177,12 +162,10 @@ FORMAT: 1A
 ### Check code for check in [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `code`: `c084806e45e5` (string, required)
+        + `code`: `c084806e45e5` (string, required)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket)
+    + Attributes (Ticket with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -195,12 +178,10 @@ FORMAT: 1A
 ### Check code for check out [POST]
 + Request (application/json)
     + Attributes (object)
-        + `data` (object)
-            + `code`: `c084806e45e5` (string, required)
+        + `code`: `c084806e45e5` (string, required)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket)
+    + Attributes (Ticket with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -212,25 +193,20 @@ FORMAT: 1A
 ## Events [/events]
 ### List events [GET]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (object)
-            + `code`: `c084806e45e5` (string, required)
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `data` (array[Event with id])
+        + `events` (array[Event with id])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
 ### Create new event [POST]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Event)
+    + Attributes (Event with variants)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Event with id)
+    + Attributes (Event with id and variants)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -244,8 +220,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `data` (Event with id)
+    + Attributes (Event with id and variants)
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -255,12 +230,10 @@ FORMAT: 1A
 
 ### Edit event details [PUT]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Event)
+    + Attributes (Event body)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Event with id)
+    + Attributes (Event with id)
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -280,44 +253,11 @@ FORMAT: 1A
     + Attributes (400 Error response)
 
 
-## Orders [/events/{eventId}/orders]
-### List orders [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `data` (array[Order with id])
-        
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-### Create order [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `data` (Order)
-
-+ Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Order with id)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-
 ## Ticket variants [/events/{eventId}/ticket-variants]
 ### List event ticket variants [GET]
 + Request (application/json)
     + Attributes (object)
-        + `data` (array[Ticket variant with id])
+        + `ticketVariants` (array[Ticket variant with id])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -327,12 +267,10 @@ FORMAT: 1A
 
 ### Create new ticket variant [POST]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Ticket variant)
+    + Attributes (Ticket variant)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket variant with id)
+    + Attributes (Ticket variant with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -348,7 +286,7 @@ FORMAT: 1A
 ### List event tickets [GET]
 + Request (application/json)
     + Attributes (object)
-        + `data` (array[Ticket with id])
+        + `tickets` (array[Ticket with id])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -358,12 +296,10 @@ FORMAT: 1A
 
 ### Create new ticket [POST]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Ticket)
+    + Attributes (Ticket)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket with id)
+    + Attributes (Ticket with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -373,13 +309,41 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+    
 
+## Orders [/orders]
+### List orders [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `orders` (array[Order with id and ticket variant info])
+        
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+    
+### Create order [POST]
++ Request (application/json)
+    + Attributes (Order)
+        + `tickets` (array[Order ticket])
+
++ Response 201 (application/json)
+    + Attributes (Order with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
 
 ## Order detail [/orders/{orderId}]
 ### Order detail [GET]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Order with id)
+    + Attributes (Order with id and ticket variant info)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -389,12 +353,10 @@ FORMAT: 1A
 
 ### Edit order [PUT]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Order)
+    + Attributes (Order)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Order with id)
+    + Attributes (Order with id)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -422,8 +384,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `data` (Ticket variant with id)
+    + Attributes (Ticket variant with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -433,12 +394,10 @@ FORMAT: 1A
 
 ### Edit ticket variant [PUT]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Ticket variant)
+    + Attributes (Ticket variant)
 
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket variant with id)    
+    + Attributes (Ticket variant with id)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -464,8 +423,7 @@ FORMAT: 1A
 ## Ticket detail [/tickets/{ticketId}]
 ### Ticket detail [GET]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Ticket with id)Chan
+    + Attributes (Ticket with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -475,12 +433,10 @@ FORMAT: 1A
 
 ### Edit ticket [PUT]
 + Request (application/json)
-    + Attributes (object)
-        + `data` (Ticket)
+    + Attributes (Ticket editation)
         
 + Response 201 (application/json)
-    + Attributes (object)
-        + `data` (Ticket with id)
+    + Attributes (Ticket with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -504,14 +460,6 @@ FORMAT: 1A
 
 
 # Data Structures
-## ACL role (object)
-+ `name`: `Administrators`
-+ `privileges` (array)
-
-## ACL role with id (object)
-+ `id`: `47f89aa8-539e-460b-aa86-3de11249a71c`
-+ Include ACL role
-
 ## Licence type (object)
 + `id`: `962754c0-1201-4cd5-812f-ef616a442445`
 + `name`: `Basic`
@@ -540,16 +488,18 @@ FORMAT: 1A
 + `id`: `05f5b1a5-38be-4190-90cd-c084806e45e5`
 + Include User
 
-## User with client and role (User with id)
+## User with client (User with id)
 + `client` (Client with licence)
-+ `role` (ACL role with id)
+
+## Client id (object)
++ `id`: `aa32a9d3-9aaf-4b73-96ff-6da9cbdc8141`
 
 ## Client (object)
 + `name`: Odbav.to
-+ `billingInfo` (Billing info)
++ include Billing info
 
 ## Client with id (object)
-+ `id`: `aa32a9d3-9aaf-4b73-96ff-6da9cbdc8141`
++ Include Client id
 + Include Client
 
 ## Client with licence (Client with id)
@@ -570,6 +520,7 @@ FORMAT: 1A
 + `translation`: `Lorem ipsum dolor sit amet`
 
 ## Guest (User)
++ `phone`: `+420123123123`
 + `companyName`: `Odbav.to`
 + `companyId`: `12345`
 + `companyVatId`: `CZ12345`
@@ -578,8 +529,12 @@ FORMAT: 1A
 + `country`: `Czech Republic`
 + `postalCode`: `11000`
 
+## Ticket id (object)
++ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea`
+
 ## Ticket (object)
 + `code`: `c084806e45e5`
++ `price` (Price)
 + `event`
     + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba`
     + `name`: `Some event`
@@ -588,26 +543,80 @@ FORMAT: 1A
         + `name`: `Some ticket variant`
 + `guest` (Guest)
 
+## Ticket editation (object)
++ `ticketVariant`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
++ Include Guest
++ `price` (Price)
+
 ## Ticket with id (object)
-+ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea`
++ Include Ticket id
 + Include Ticket
 
-## Event (object)
+## Event day (object)
++ `start`: `2017-03-01 08:00:00`
++ `end`: `2017-03-01 20:00:00`
+
+## Event body (object)
++ `name`: `Some awesome event!`
++ `email`: `info@odbav.to`
++ `phone`: `+420123123123`
++ `street`: `Anonymous 123`
++ `city`: `Prague`
++ `country`: `Czech Republic`
++ `postalCode`: `11000`
++ `days` (array[Event day])
+
+## Event id (object)
++ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce`
+
+## Event with variants (object)
++ Include Event body
++ `variants` (array[Ticket variant])
 
 ## Event with id (object)
-+ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce`
-+ Include Event
++ Include Event id
++ Include Event body
+
+## Event with id and variants (Event with id)
++ `variants` (array[Ticket variant with id])
+
+## Order ticket (object)
++ `variant`:  `5f470e02-3442-488a-9c2c-804e16520e44`
++ `currency`: `CZK`
+
+## Order ticket with event info (object)
++ Include Ticket id
++ `code`: `c084806e45e5`
++ `variant`
+    + `id`: `5f470e02-3442-488a-9c2c-804e16520e44`
+    + `name`: `Some variant name`
+    + `price` (Price)
+    + `event`
+        + Include Event id
+        + `name`: `Some event name`
 
 ## Order (object)
++ Include Guest
 
 ## Order with id (object)
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
 + Include Order
 
+## Order with id and ticket variant info
++ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
++ Include Guest
++ `price` (Price)
++ `tickets` (array[Order ticket with event info])
+
 ## Ticket variant (object)
++ `name`: `Some ticket variant`
++ `prices` (array[Price])
+
+## Ticket variant id (object)
++ `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
 
 ## Ticket variant with id (object)
-+ `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
++ Include Ticket variant id
 + Include Ticket variant
 
 ## Error (object)
