@@ -560,6 +560,10 @@ FORMAT: 1A
 + `start`: `2017-03-01 08:00:00`
 + `end`: `2017-03-01 20:00:00`
 
+## Event day 2 (object)
++ `start`: `2017-03-02 06:00:00`
++ `end`: `2017-03-02 15:00:00`
+
 ## Event bounds (object)
 + `north`: `49.209889999` (number)
 + `east`: `16.603493699999945` (number)
@@ -570,6 +574,7 @@ FORMAT: 1A
 + `name`: `Some awesome event!`
 + `email`: `info@odbav.to`
 + `phone`: `+420123123123`
++ `placeName`: `Event venue`
 + `street`: `Anonymous 123`
 + `city`: `Prague`
 + `country`: `Czech Republic`
@@ -577,7 +582,11 @@ FORMAT: 1A
 + `lat`: `49.2098` (number)
 + `lng`: `16.603` (number)
 + `bounds` (Event bounds)
-+ `days` (array[Event day])
++ `days` (array[Event day, Event day 2])
++ `customTimes`: `true` (boolean)
++ `type`: `gig`
++ `description`: `Neat description`
++ `link`: `http://odbav.to`
 
 ## Event id (object)
 + `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce`
