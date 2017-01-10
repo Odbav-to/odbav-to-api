@@ -570,11 +570,8 @@ FORMAT: 1A
 + `south`: `49.2098176` (number)
 + `west`: `16.603102900000067` (number)
 
-## Event body (object)
-+ `name`: `Some awesome event!`
-+ `email`: `info@odbav.to`
-+ `phone`: `+420123123123`
-+ `placeName`: `Event venue`
+## Event location (object)
++ `fullAddress`: `Anonymous 123, Prague 11000, Czech Republic`
 + `street`: `Anonymous 123`
 + `city`: `Prague`
 + `country`: `Czech Republic`
@@ -582,6 +579,13 @@ FORMAT: 1A
 + `lat`: `49.2098` (number)
 + `lng`: `16.603` (number)
 + `bounds` (Event bounds)
+
+## Event body (object)
++ `name`: `Some awesome event!`
++ `email`: `info@odbav.to`
++ `phone`: `+420123123123`
++ `placeName`: `Event venue`
++ `location`: (Event location)
 + `days` (array[Event day, Event day 2])
 + `customTimes`: `true` (boolean)
 + `type`: `gig`
