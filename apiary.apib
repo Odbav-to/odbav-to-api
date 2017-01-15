@@ -477,6 +477,10 @@ FORMAT: 1A
 + `amount`: `100` (number)
 + `currency`: `CZK`
 
+## Price 2 (object)
++ `amount`: `3` (number)
++ `currency`: `EUR`
+
 ## Licence (object)
 + `validUntil`: `2018-01-01 23:00:00`
 + `type` (Licence type)
@@ -587,7 +591,7 @@ FORMAT: 1A
 + `email`: `info@odbav.to`
 + `phone`: `+420123123123`
 + `placeName`: `Event venue`
-+ `location`: (Event location)
++ `location` (Event location)
 + `days` (array[Event day, Event day 2])
 + `customTimes`: `true` (boolean)
 + `type`: `gig`
@@ -638,7 +642,7 @@ FORMAT: 1A
 
 ## Ticket variant (object)
 + `name`: `Some ticket variant`
-+ `prices` (array[Price])
++ `prices` (array[Price, Price 2])
 + `security`: `qr`
 + `amount`: `1000` (number)
 + `amountLimited`: `true` (boolean)
@@ -647,6 +651,7 @@ FORMAT: 1A
 + `validDays` (array[Event day, Event day 2])
 + `description`: `Basic full day ticket`
 + `validBeforeStart`: `true` (boolean) 
++ `eventId`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string)
 
 ## Ticket variant id (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
