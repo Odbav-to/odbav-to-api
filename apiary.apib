@@ -260,6 +260,8 @@ FORMAT: 1A
 ## Ticket variants [/events/{eventId}/ticket-variants]
 ### List event ticket variants [GET]
 + Request (application/json)
+
++ Response 200 (application/json)
     + Attributes (object)
         + `ticketVariants` (array[Ticket variant with id])
 
@@ -637,6 +639,14 @@ FORMAT: 1A
 ## Ticket variant (object)
 + `name`: `Some ticket variant`
 + `prices` (array[Price])
++ `security`: `qr`
++ `amount`: `1000` (number)
++ `amountLimited`: `true` (boolean)
++ `sold`: `23` (number)
++ `customTimes`: `true` (boolean)
++ `validDays` (array[Event day, Event day 2])
++ `description`: `Basic full day ticket`
++ `validBeforeStart`: `true` (boolean) 
 
 ## Ticket variant id (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
