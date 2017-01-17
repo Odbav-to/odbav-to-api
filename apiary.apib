@@ -70,6 +70,24 @@ FORMAT: 1A
     + Attributes (object)
         + `types` (array[Licence type with details])
 
+
+## Currencies [/currencies]
+### List of supported currencies [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `currencies` (array[Currency, Currency 2])
+
+
+## Countries [/countries]
+### List of supported countries [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `currencies` (array[Country, Country 2])
+
 <!--
 ## Verify email [/verify-email]
 ### Verify email [POST]
@@ -473,12 +491,34 @@ FORMAT: 1A
 ## Licence type with details (Licence type)
 + `prices` (array[Price])
 
+## Currency (object)
++ `code`: `CZK` (string)
++ `local`: `Kč` (string)
+
+## Currency 2 (object)
++ `code`: `EUR` (string)
++ `local`: `€` (string)
+
+## Country (object)
++ `code`: `CZ`
++ `name`: `Česká Republika`
++ `internationalName`: `Czech Republic`
++ `currency`: `CZK`
++ `phoneCode`: `+420`
+
+## Country 2 (object)
++ `code`: `US`
++ `name`: `United States`
++ `internationalName`: `United States`
++ `currency`: `USD`
++ `phoneCode`: `+1`
+
 ## Price (object)
 + `amount`: `100` (number)
 + `currency`: `CZK`
 
 ## Price 2 (object)
-+ `amount`: `3` (number)
++ `amount`: `4` (number)
 + `currency`: `EUR`
 
 ## Licence (object)
@@ -521,7 +561,7 @@ FORMAT: 1A
 + `subjectVatId`: `CZ12345`
 + `street`: `Anonymous 123`
 + `city`: `Prague`
-+ `country`: `Czech Republic`
++ `countryCode`: `CZ`
 + `postalCode`: `11000`
 + `iban`: `CZ6508000000192000145399`
 
@@ -536,7 +576,7 @@ FORMAT: 1A
 + `companyVatId`: `CZ12345`
 + `street`: `Anonymous 123`
 + `city`: `Prague`
-+ `country`: `Czech Republic`
++ `countryCode`: `CZ`
 + `postalCode`: `11000`
 
 ## Ticket id (object)
@@ -580,7 +620,7 @@ FORMAT: 1A
 + `fullAddress`: `Anonymous 123, Prague 11000, Czech Republic`
 + `street`: `Anonymous 123`
 + `city`: `Prague`
-+ `country`: `Czech Republic`
++ `countryCode`: `CZ`
 + `postalCode`: `11000`
 + `lat`: `49.2098` (number)
 + `lng`: `16.603` (number)
