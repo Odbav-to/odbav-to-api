@@ -322,7 +322,9 @@ FORMAT: 1A
 
 ### Create new ticket [POST]
 + Request (application/json)
-    + Attributes (Ticket)
+    + Attributes (object)
+        + `guest` (Guest)
+        + `ticket` (Order ticket)
 
 + Response 201 (application/json)
     + Attributes (Ticket with id)
@@ -454,6 +456,8 @@ FORMAT: 1A
 ## Ticket detail [/tickets/{ticketId}]
 ### Ticket detail [GET]
 + Request (application/json)
+    
++ Response 200 (application/json)
     + Attributes (Ticket with id)
 
 + Response 401 (application/json)
