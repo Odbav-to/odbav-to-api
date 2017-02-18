@@ -493,6 +493,19 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (400 Error response)
 
+## Company detail [/company/{companyId}]
+### Company detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Company)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 
 # Data Structures
 ## Licence type (object)
@@ -567,6 +580,14 @@ FORMAT: 1A
 ## Client with licence (Client with id)
 + `licence` (Licence with id)
 
+## Company (object)
++ `companyId`: `28994124`
++ `name`: `Velveth International Corporation s.r.o.`
++ `street`: `Slezská 1669/58`
++ `city`: `Praha`
++ `postalCode`: `12000`
++ `countryCode`: `CZ`
+
 ## Billing info (object)
 + `subject`: `Odbav.to`
 + `subjectId`: `12345`
@@ -575,7 +596,11 @@ FORMAT: 1A
 + `city`: `Prague`
 + `countryCode`: `CZ`
 + `postalCode`: `11000`
++ `owner`: `VIC`
++ `acountNo`: `233432765`
++ `bankCode`: `0600`
 + `iban`: `CZ6508000000192000145399`
++ `swiftbic`: `SWIFTBIC`
 
 ## Translation (object)
 + `key`: `hello-world`
@@ -702,7 +727,6 @@ FORMAT: 1A
 + `customTimes`: `true` (boolean)
 + `validDays` (array[Event day, Event day 2])
 + `description`: `Basic full day ticket`
-+ `validBeforeStart`: `true` (boolean) 
 + `eventId`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string)
 
 ## Ticket variant id (object)
