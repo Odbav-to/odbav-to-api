@@ -506,6 +506,33 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Billing detail [/billing]
+### Billing detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Billing info)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit billing [PUT]
++ Request (application/json)
+
++ Response 201 (application/json)
+    + Attributes (Billing info)
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 # Data Structures
 ## Licence type (object)
@@ -596,8 +623,8 @@ FORMAT: 1A
 + `city`: `Prague`
 + `countryCode`: `CZ`
 + `postalCode`: `11000`
-+ `owner`: `VIC`
-+ `acountNo`: `233432765`
++ `accountOwner`: `VIC`
++ `accountNo`: `233432765`
 + `bankCode`: `0600`
 + `iban`: `CZ6508000000192000145399`
 + `swiftbic`: `SWIFTBIC`
