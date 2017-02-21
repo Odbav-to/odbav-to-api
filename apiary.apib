@@ -54,8 +54,8 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `translations` (array[Translation])
+    + Attributes (array)
+        + (Translation)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -67,26 +67,24 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `types` (array[Licence type with details])
-
+    + Attributes (array)
+        + (Licence type with details)
 
 ## Currencies [/currencies]
 ### List of supported currencies [GET]
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `currencies` (array[Currency, Currency 2])
-
+    + Attributes (array)
+        + (Currency)
 
 ## Countries [/countries]
 ### List of supported countries [GET]
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `currencies` (array[Country, Country 2])
+    + Attributes (array)
+        + (Country)
 
 <!--
 ## Verify email [/verify-email]
@@ -160,8 +158,8 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `users` (array[User with id, User with id])
+    + Attributes (array)
+        + (User with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -217,8 +215,8 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `events` (array[Event with id])
+    + Attributes (array)
+        + (Event with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -280,8 +278,8 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `ticketVariants` (array[Ticket variant with id])
+    + Attributes (array)
+        + (Ticket variant with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -311,8 +309,8 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `tickets` (array[Ticket with id])
+    + Attributes (array)
+        + (Ticket with id)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -344,9 +342,9 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (object)
-        + `orders` (array[Order with id and ticket variant info])
-        
+    + Attributes (array)
+        + (Order with id and ticket variant info)
+
 + Response 401 (application/json)
     + Attributes (401 Error response)
     
@@ -547,23 +545,12 @@ FORMAT: 1A
 + `code`: `CZK` (string)
 + `local`: `Kč` (string)
 
-## Currency 2 (object)
-+ `code`: `EUR` (string)
-+ `local`: `€` (string)
-
 ## Country (object)
 + `code`: `CZ`
 + `name`: `Česká Republika`
 + `internationalName`: `Czech Republic`
 + `currency`: `CZK`
 + `phoneCode`: `+420`
-
-## Country 2 (object)
-+ `code`: `US`
-+ `name`: `United States`
-+ `internationalName`: `United States`
-+ `currency`: `USD`
-+ `phoneCode`: `+1`
 
 ## Price (object)
 + `amount`: `100` (number)
