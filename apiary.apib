@@ -534,12 +534,14 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
-## Order-form blank [/order-form]
+
+## Order-form blank [/{eventId}/order-form]
 ### Post a new form created by user on current email [POST]
 + Request (application/json)
     + Attributes (object)
-        + `fields` (array): `field (object)`
-
+        + `fields` (array[Form type])
+        + `email` (string)
+        + `description` (string)
 + Response 204 (application/json)
     + Attributes (object)
         + `success`: `true`
@@ -765,6 +767,12 @@ FORMAT: 1A
 ## Ticket variant with id (object)
 + Include Ticket variant id
 + Include Ticket variant
+
+## Form type (object)
++ `type`: `input`
++ `fieldName: `lorem ipsum`
++ `type`: `text`
++ `toggled`: `false`
 
 ## Error (object)
 + `title`: `Short title of the problem`
