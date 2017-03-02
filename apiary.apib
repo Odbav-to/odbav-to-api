@@ -304,6 +304,45 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Ticket variant detail [/ticket-variants/{ticketVariantId}]
+### Ticket variant detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Ticket variant with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit ticket variant [PUT]
++ Request (application/json)
+    + Attributes (Ticket variant)
+
++ Response 201 (application/json)
+    + Attributes (Ticket variant with id)
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Delete ticket variant [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)
 
 ## Tickets [/events/{eventId}/tickets]
 ### List event tickets [GET]
@@ -336,7 +375,46 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+
+## Ticket detail [/tickets/{ticketId}]
+### Ticket detail [GET]
++ Request (application/json)
     
++ Response 200 (application/json)
+    + Attributes (Ticket with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit ticket [PUT]
++ Request (application/json)
+    + Attributes (Ticket editation)
+        
++ Response 201 (application/json)
+    + Attributes (Ticket with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Delete ticket [DELETE]
++ Request (application/json)
+
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (400 Error response)    
 
 ## Orders [/orders]
 ### List orders [GET]
@@ -400,88 +478,6 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 ### Delete order [DELETE]
-+ Request (application/json)
-
-+ Response 204 (application/json)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 404 (application/json)
-    + Attributes (400 Error response)
-
-
-## Ticket variant detail [/ticket-variants/{ticketVariantId}]
-### Ticket variant detail [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (Ticket variant with id)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-### Edit ticket variant [PUT]
-+ Request (application/json)
-    + Attributes (Ticket variant)
-
-+ Response 201 (application/json)
-    + Attributes (Ticket variant with id)
-        
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-### Delete ticket variant [DELETE]
-+ Request (application/json)
-
-+ Response 204 (application/json)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 404 (application/json)
-    + Attributes (400 Error response)
-
-
-## Ticket detail [/tickets/{ticketId}]
-### Ticket detail [GET]
-+ Request (application/json)
-    
-+ Response 200 (application/json)
-    + Attributes (Ticket with id)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-### Edit ticket [PUT]
-+ Request (application/json)
-    + Attributes (Ticket editation)
-        
-+ Response 201 (application/json)
-    + Attributes (Ticket with id)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-    
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-### Delete ticket [DELETE]
 + Request (application/json)
 
 + Response 204 (application/json)
