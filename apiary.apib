@@ -693,15 +693,12 @@ FORMAT: 1A
 
 ## Event body (object)
 + `name`: `Some awesome event!`
-+ `email`: `info@odbav.to`
-+ `phone`: `+420123123123`
 + `placeName`: `Event venue`
 + `location` (Event location)
 + `days` (array[Event day, Event day 2])
-+ `customTimes`: `true` (boolean)
-+ `type`: `gig`
++ `organizer`: `ABC promoting ltd`
 + `description`: `Neat description`
-+ `link`: `http://odbav.to`
++ `link`: `http://odbav.to/tickets/events`
 
 ## Event id (object)
 + `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce`
@@ -748,14 +745,12 @@ FORMAT: 1A
 ## Ticket variant (object)
 + `name`: `Some ticket variant`
 + `prices` (array[Price, Price 2])
-+ `security`: `qr`
 + `amount`: `1000` (number)
 + `amountLimited`: `true` (boolean)
 + `sold`: `23` (number)
-+ `customTimes`: `true` (boolean)
++ `public`: `true` (boolean)
 + `validDays` (array[Event day, Event day 2])
-+ `description`: `Basic full day ticket`
-+ `eventId`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string)
++ `img`: `/path/to/img`
 
 ## Ticket variant id (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
