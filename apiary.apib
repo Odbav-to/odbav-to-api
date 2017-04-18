@@ -20,7 +20,7 @@ FORMAT: 1A
 
 
 ## Forgotten password [/forgotten-password]
-### Request new password [POST]
+### Request password recovering token [POST]
 + Request (application/json)
     + Attributes (object)
         + `email`: `info@odbav.to`
@@ -29,6 +29,35 @@ FORMAT: 1A
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
+    
+## Change password [/change-password]
+### Set new password [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `token`: `som3r4nd0mh4$h`
+        + `password`: `new-password`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
+## Change password [/change-password/{token}]
+### Info about password change token [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `email`: `info@odbav.to`
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
 
 
 ## Registration [/sign-up]
@@ -113,22 +142,6 @@ FORMAT: 1A
     + Attributes (400 Error response)
 -->
 
-## Change password [/change-password]
-### Change password [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `oldPassword`: `secretpassword`
-        + `newPassword`: `secretpassword`
-
-+ Response 204 (application/json)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-
 ## Logged user [/me]
 ### Retrieve informations about itself [GET]
 + Request (application/json)
@@ -153,6 +166,20 @@ FORMAT: 1A
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
+## Change password [/me/change-password]
+### Change password [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `oldPassword`: `secretpassword`
+        + `newPassword`: `secretpassword`
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
 
 ## Users [/users]
 ### List all users of same client [GET]
