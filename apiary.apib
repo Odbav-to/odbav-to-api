@@ -475,6 +475,22 @@ FORMAT: 1A
     + Attributes (401 Error response)
     
 
+## Order cancel [/orders/cancel]
+### Cancel order [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string)
+
++ Response 200 (application/json)
+    + Attributes (Order with id and ticket variant info)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+        
+
 ## Order detail [/orders/{orderId}]
 ### Order detail [GET]
 + Request (application/json)
@@ -768,6 +784,7 @@ FORMAT: 1A
 
 ## Order with id and ticket variant info
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
++ `status`: `created`
 + Include Guest
 + `price` (Price)
 + `tickets` (array[Order ticket with event info])
