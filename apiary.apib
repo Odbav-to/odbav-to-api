@@ -460,10 +460,13 @@ FORMAT: 1A
 ### Create order [POST]
 + Request (application/json)
     + Attributes (Order)
+        + `returnUrl`: `/orders/{orderId}`
         + `tickets` (array[Order ticket])
 
 + Response 201 (application/json)
     + Attributes (Order with id)
+        + `status`: `created`
+        + `redirect`: `https://some-random-url.com/`
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
