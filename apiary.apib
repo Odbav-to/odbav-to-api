@@ -18,8 +18,7 @@ FORMAT: 1A
     + Attributes (400 Error response)
 
 
-
-## Forgotten password [/forgotten-password]
+## Recover password [/recover-password]
 ### Request password recovering token [POST]
 + Request (application/json)
     + Attributes (object)
@@ -29,7 +28,7 @@ FORMAT: 1A
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
-    
+
 ## Change password [/change-password]
 ### Set new password [POST]
 + Request (application/json)
@@ -44,7 +43,7 @@ FORMAT: 1A
     
 + Response 401 (application/json)
     + Attributes (401 Error response)
-    
+
 ## Change password [/change-password/{token}]
 ### Info about password change token [GET]
 + Request (application/json)
@@ -575,6 +574,25 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+    
+    
+
+## Ticket variant image upload [/ticket-variants/image]
+### Ticket variant image impload [POST]
++ Request (multipart/form-data)
+
++ Response 201 (application/json)
+    + Attributes
+        + `id`: `05f5b1a5-38be-4190-90cd-c084806e4445`
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 
 ## Order-form blank [/{eventId}/order-form]
@@ -797,7 +815,7 @@ FORMAT: 1A
 + `sold`: `23` (number)
 + `public`: `true` (boolean)
 + `validDays` (array[Event day, Event day 2])
-+ `img`: `/path/to/img`
++ `img`: `05f5b1a5-38be-4190-90cd-c084806e4555`
 
 ## Ticket variant id (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
