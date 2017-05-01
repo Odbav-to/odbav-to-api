@@ -595,7 +595,7 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
-## Order-form blank [/{eventId}/order-form]
+## Order-form blank [/events/{eventId}/order-form]
 ### Post a new form created by user on current email [POST]
 + Request (application/json)
     + Attributes (object)
@@ -607,6 +607,52 @@ FORMAT: 1A
         + `success`: `true`
 + Response 400 (application/json)
     + Attributes (400 Error response)
+    
+
+## Statistics cashbook [/events/{eventId}/statistics/cashbook]
+### Get payments [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Statistics cashbook)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
+## Statistics payments [/events/{eventId}/statistics/payments]
+### Get payments [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Statistics payment)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+    
+    
+
+## Statistics tickets [/events/{eventId}/statistics/tickets]
+### Get tickets [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Statistics ticket)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 
 # Data Structures
@@ -824,6 +870,32 @@ FORMAT: 1A
 ## Ticket variant with id (object)
 + Include Ticket variant id
 + Include Ticket variant
+
+## Statistics cashbook (object)
++ `datetime`: `2017-03-02 06:00:00`
++ `price`: (Price)
++ `cashdeskId`: `1`
+
+## Statistics payment (object)
++ `paymentDate`: `2017-03-02 06:00:00`
++ `paymentType`: `card`
++ `paymentNo`: `1(P2)160002402`
++ `priceTotalCZK`: `100` (number)
++ `priceNoVatCZK`: `85` (number)
++ `priceVatCZK`: `15` (number)
++ `priceInclVatCZK`: `100` (number)
++ `priceInclVatEUR`: `4` (number)
+
+## Statistics ticket (object)
++ `paymentDate`: `2017-03-02 06:00:00`
++ `paymentType`: `card`
++ `paymentNo`: `1(P2)160002402`
++ `ticketNo`: `178718815296`
++ `priceTotalCZK`: `100` (number)
++ `priceNoVatCZK`: `85` (number)
++ `priceVatCZK`: `15` (number)
++ `priceInclVatCZK`: `100` (number)
++ `priceInclVatEUR`: `4` (number)
 
 ## Form type (object)
 + `type`: `input`
