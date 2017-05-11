@@ -2,71 +2,13 @@ FORMAT: 1A
 
 # Odbav.to
 
-## Login [/login]
-### Exchange credentials for access token [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `email`: `info@odbav.to` (string, required)
-        + `password`: `secretpassword` (string, required)
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `token`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ` (string)
-        + `user` (User with client)
-                    
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-
-## Recover password [/recover-password]
-### Request password recovering token [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `email`: `info@odbav.to`
-
-+ Response 204 (application/json)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-## Change password [/change-password]
-### Set new password [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `token`: `som3r4nd0mh4$h`
-        + `password`: `new-password`
-
-+ Response 204 (application/json)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-    
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-## Change password [/change-password/{token}]
-### Info about password change token [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (object)
-        + `email`: `info@odbav.to`
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-    
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-
 ## Registration [/sign-up]
 ### Create new client and associated user [POST]
 + Request (application/json)
     + Attributes (object)
+        + `uid`: `ZOMnwqD6oqP2KKfV1PCdJeHQlE43`
         + `licenceType`: `a12b0231-be48-4d40-a69d-d521c159dae9`
         + `client` (Client)
-        + `user` (User)
-            + `password`: `secretpassword`
 
 + Response 201 (application/json)
     + Attributes (object)
@@ -164,13 +106,6 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
-
-## Change password [/me/change-password]
-### Change password [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `oldPassword`: `secretpassword`
-        + `newPassword`: `secretpassword`
 
 + Response 204 (application/json)
 
