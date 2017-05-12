@@ -2,23 +2,6 @@ FORMAT: 1A
 
 # Odbav.to
 
-## Registration [/sign-up]
-### Create new client and associated user [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `uid`: `ZOMnwqD6oqP2KKfV1PCdJeHQlE43`
-        + `licenceType`: `a12b0231-be48-4d40-a69d-d521c159dae9`
-        + `client` (Client)
-
-+ Response 201 (application/json)
-    + Attributes (object)
-        + `licence` (Licence with id)
-        + `client` (Client with id)
-        + `user` (User with id)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
 <!--
 ## Translations [/translations]
 ### List of all translations [GET]
