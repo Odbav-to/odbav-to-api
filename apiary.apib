@@ -40,32 +40,6 @@ FORMAT: 1A
     + Attributes (array)
         + (Country)
 
-<!--
-## Verify email [/verify-email]
-### Verify email [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `email`: `info@odbav.to`
-        + `hash`: `4b68e41535b88a57870adfb6b8e99a4c`
-
-+ Response 204 (application/json)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-
-## Resend verification email [/resend-verification-email]
-### Resend verification email [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `email`: `info@odbav.to`
-
-+ Response 204 (application/json)
-
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
--->
-
 ## Logged user [/me]
 ### Retrieve informations about itself [GET]
 + Request (application/json)
@@ -492,40 +466,7 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
-    
-    
 
-## Ticket variant image upload [/ticket-variants/image]
-### Ticket variant image impload [POST]
-+ Request (multipart/form-data)
-
-+ Response 201 (application/json)
-    + Attributes
-        + `id`: `05f5b1a5-38be-4190-90cd-c084806e4445`
-        
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-
-## Order-form blank [/events/{eventId}/order-form]
-### Post a new form created by user on current email [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `fields` (array[Form type])
-        + `email` (string)
-        + `description` (string)
-+ Response 204 (application/json)
-    + Attributes (object)
-        + `success`: `true`
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-    
 
 ## Statistics cashbook [/events/{eventId}/statistics/cashbook]
 ### Get payments [GET]
