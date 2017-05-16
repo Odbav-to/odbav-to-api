@@ -452,8 +452,8 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (400 Error response)
 
-## Company detail [/company/{companyId}]
-### Company detail [GET]
+## Company info [/company/{companyId}]
+### Retrieve info from public registry [GET]
 + Request (application/json)
 
 + Response 200 (application/json)
@@ -494,21 +494,7 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
     
-
-## Order-form blank [/events/{eventId}/order-form]
-### Post a new form created by user on current email [POST]
-+ Request (application/json)
-    + Attributes (object)
-        + `fields` (array[Form type])
-        + `email` (string)
-        + `description` (string)
-+ Response 204 (application/json)
-    + Attributes (object)
-        + `success`: `true`
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
     
-
 ## Statistics cashbook [/events/{eventId}/statistics/cashbook]
 ### Get payments [GET]
 + Request (application/json)
