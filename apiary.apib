@@ -402,8 +402,7 @@ FORMAT: 1A
     + Attributes (object)
         + `orderId` (string)
 
-+ Response 200 (application/json)
-    + Attributes (Order with id and ticket variant info)
++ Response 204 (application/json)
     
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -725,10 +724,10 @@ FORMAT: 1A
 ## Order ticket with event info (object)
 + Include Ticket id
 + `code`: `c084806e45e5`
++ `price` (Price)
 + `variant`
     + `id`: `5f470e02-3442-488a-9c2c-804e16520e44`
     + `name`: `Some variant name`
-    + `price` (Price)
     + `event`
         + Include Event id
         + `name`: `Some event name`
