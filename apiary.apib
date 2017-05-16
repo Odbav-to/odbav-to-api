@@ -375,15 +375,17 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
     
+   
 ### Create order [POST]
 + Request (application/json)
     + Attributes (Order)
+        + `status`: `paidByCash`
+        + `currency`: `CZK`
         + `returnUrl`: `/orders/{orderId}`
         + `tickets` (array[Order ticket])
 
 + Response 201 (application/json)
     + Attributes (Order with id)
-        + `status`: `created`
         + `redirect`: `https://some-random-url.com/`
 
 + Response 400 (application/json)
@@ -391,6 +393,7 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
     
 
 ## Order cancel [/orders/cancel]
@@ -427,7 +430,7 @@ FORMAT: 1A
 
 ### Edit order [PUT]
 + Request (application/json)
-    + Attributes (Order)
+    + Attributes (Guest)
 
 + Response 201 (application/json)
     + Attributes (Order with id)
@@ -718,7 +721,6 @@ FORMAT: 1A
 
 ## Order ticket (object)
 + `variant`:  `5f470e02-3442-488a-9c2c-804e16520e44`
-+ `currency`: `CZK`
 
 ## Order ticket with event info (object)
 + Include Ticket id
@@ -732,16 +734,18 @@ FORMAT: 1A
         + `name`: `Some event name`
 
 ## Order (object)
-+ Include Guest
++ `guest` (Guest)
 
 ## Order with id (object)
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
 + Include Order
++ `status`: `created`
++ `price` (Price)
 
 ## Order with id and ticket variant info
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
 + `status`: `created`
-+ Include Guest
++ `guest` (Guest)
 + `price` (Price)
 + `tickets` (array[Order ticket with event info])
 
