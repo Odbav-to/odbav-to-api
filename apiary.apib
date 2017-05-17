@@ -354,16 +354,50 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Order with id and ticket variant info)
+        + (Order with id)
+            + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+
+### Create order (customer from outside) [POST]
++ Request (application/json)
+    + Attributes (Order)
+        + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
+        + `currency`: `CZK`
+        + `returnUrl`: `/orders/{orderId}`
+        + `tickets` (array[Order ticket])
+
++ Response 201 (application/json)
+    + Attributes (Order with id and ticket variant info)
+        + `redirect`: `https://some-random-url.com/`
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
     
 
-### Create order [POST]
+## Event orders [/event/{eventId}/orders]
+### List event orders [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Order with id)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+    
+
+### Create order (manual or cashdesk) [POST]
 + Request (application/json)
     + Attributes (Order)
         + `status`: `paidByCash`
@@ -377,9 +411,15 @@ FORMAT: 1A
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
-
+    
 + Response 401 (application/json)
-    + Attributes (401 Error response)
+    + Attributes (400 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
     
 
 ## Cancel order [/orders/cancel]
@@ -421,7 +461,7 @@ FORMAT: 1A
     + Attributes (Guest)
 
 + Response 201 (application/json)
-    + Attributes (Order with id)
+    + Attributes (Order with id and ticket variant info)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -719,15 +759,13 @@ FORMAT: 1A
 
 ## Order with id (object)
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
-+ Include Order
++ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
 + `status`: `created`
 + `price` (Price)
++ Include Order
 
 ## Order with id and ticket variant info
-+ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
-+ `status`: `created`
-+ `guest` (Guest)
-+ `price` (Price)
++ Include Order with id
 + `tickets` (array[Order ticket with event info])
 
 ## Ticket variant (object)
