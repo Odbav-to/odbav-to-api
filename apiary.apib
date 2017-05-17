@@ -180,6 +180,22 @@ FORMAT: 1A
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
+## Cancel event [/events/cancel]
+### Cancel event [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ## Event detail [/events/{eventId}]
 ### Event detail [GET]
@@ -245,6 +261,24 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+    
+
+## Cancel ticket variant [/ticket-variants/cancel]
+### Cancel event [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `ticketVariantId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
@@ -320,6 +354,24 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+    
+
+## Cancel ticket [/tickets/cancel]
+### Cancel event [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `ticketId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ## Ticket detail [/tickets/{ticketId}]
 ### Ticket detail [GET]
@@ -375,7 +427,7 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
     
-   
+
 ### Create order [POST]
 + Request (application/json)
     + Attributes (Order)
@@ -394,9 +446,8 @@ FORMAT: 1A
 + Response 401 (application/json)
     + Attributes (401 Error response)
     
-    
 
-## Order cancel [/orders/cancel]
+## Cancel order [/orders/cancel]
 ### Cancel order [POST]
 + Request (application/json)
     + Attributes (object)
@@ -406,6 +457,9 @@ FORMAT: 1A
     
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
@@ -496,7 +550,7 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
     
-    
+
 ## Statistics cashbook [/events/{eventId}/statistics/cashbook]
 ### Get payments [GET]
 + Request (application/json)
@@ -810,6 +864,9 @@ FORMAT: 1A
 + errors (array[400 Error, 400 Error])
 
 ## 401 Error response (object)
++ errors (array[Error])
+
+## 403 Error response (object)
 + errors (array[Error])
 
 ## 404 Error response (object)
