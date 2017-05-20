@@ -492,6 +492,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (Billing info)
+        + `customerId`: `5f470e02-3442-488a-9c2c-804e16520e44`
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -505,6 +506,7 @@ FORMAT: 1A
 
 + Response 201 (application/json)
     + Attributes (Billing info)
+        + `customerId`: `5f470e02-3442-488a-9c2c-804e16520e44`
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -625,11 +627,10 @@ FORMAT: 1A
 + `city`: `Prague`
 + `countryCode`: `CZ`
 + `postalCode`: `11000`
-+ `accountOwner`: `VIC`
-+ `accountNo`: `233432765`
++ `accountNumber`: `233432765`
 + `bankCode`: `0600`
 + `iban`: `CZ6508000000192000145399`
-+ `swiftbic`: `SWIFTBIC`
++ `bic`: `SWIFTBIC`
 
 ## Translation (object)
 + `key`: `hello-world`
