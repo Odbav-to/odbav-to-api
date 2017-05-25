@@ -135,10 +135,10 @@ FORMAT: 1A
 
 ### Create new event [POST]
 + Request (application/json)
-    + Attributes (Event with variants)
+    + Attributes (Event)
 
 + Response 201 (application/json)
-    + Attributes (Event with id and variants)
+    + Attributes (Event with id)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -714,6 +714,9 @@ FORMAT: 1A
 ## Event with variants (object)
 + Include Event body
 + `variants` (array[Ticket variant])
+
+## Event (object)
++ Include Event body
 
 ## Event with id (object)
 + Include Event id
