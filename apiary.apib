@@ -721,6 +721,7 @@ FORMAT: 1A
 ## Event with id (object)
 + Include Event id
 + Include Event body
++ `checklist` (Event checklist)
 
 ## Event with id and variants (Event with id)
 + `variants` (array[Ticket variant with id])
@@ -801,6 +802,13 @@ FORMAT: 1A
 + `fieldName: `lorem ipsum`
 + `type`: `text`
 + `toggled`: `false`
+
+## Event checklist (object)
++ `isReady`: false (boolean)
++ `ticketVariant`: false (boolean)
++ `location`: false (boolean)
++ `date`: false (boolean)
++ `billingInfo`: false (boolean)
 
 ## Error (object)
 + `title`: `Short title of the problem`
