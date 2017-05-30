@@ -473,6 +473,17 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Pay order [/orders/{orderId}/pay]
+### Create transaction and redirect [POST]
++ Request (application/json)
+    + Attributes
+        + `returnUrl`: `/orders/{orderId}`
+
++ Response 303 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
 ## Company info [/company-info/{companyId}]
 ### Retrieve info from public registry [GET]
 + Request (application/json)
@@ -761,6 +772,7 @@ FORMAT: 1A
 + `amount`: `1000` (number)
 + `amountLimited`: `true` (boolean)
 + `sold`: `23` (number)
++ `remaining`: `15` (number)
 + `public`: `true` (boolean)
 + `validDays` (array[Event day, Event day 2])
 + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555`
