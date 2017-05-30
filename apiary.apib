@@ -196,7 +196,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Ticket variant with id)
+        + (Ticket variant with id and currencies)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -243,7 +243,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (Ticket variant with id)
+    + Attributes (Ticket variant with id and currencies)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -479,7 +479,7 @@ FORMAT: 1A
     + Attributes
         + `returnUrl`: `/orders/{orderId}`
 
-+ Response 303 (application/json)
++ Response 302 (application/json)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -783,6 +783,13 @@ FORMAT: 1A
 ## Ticket variant with id (object)
 + Include Ticket variant id
 + Include Ticket variant
+
+## Ticket variant with id and currencies (object)
++ Include Ticket variant id
++ Include Ticket variant
++ `currencies` (array)
+    + `EUR`
+    + `CZK`
 
 ## Statistics cashbook (object)
 + `datetime`: `2017-03-02 06:00:00`
