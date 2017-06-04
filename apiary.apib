@@ -683,6 +683,7 @@ FORMAT: 1A
 ## Ticket with id (object)
 + Include Ticket id
 + Include Ticket
++ Include Cancelled
 
 ## Event day (object)
 + `start`: `2017-03-01 08:00:00`
@@ -734,6 +735,7 @@ FORMAT: 1A
 + Include Event id
 + Include Event body
 + `checklist` (Event checklist)
++ Include Cancelled
 
 ## Event with id and variants (Event with id)
 + `variants` (array[Ticket variant with id])
@@ -762,6 +764,7 @@ FORMAT: 1A
 + `status`: `created`
 + `price` (Price)
 + Include Order
++ Include Cancelled
 
 ## Order with id and ticket variant info
 + Include Order with id
@@ -784,6 +787,7 @@ FORMAT: 1A
 ## Ticket variant with id (object)
 + Include Ticket variant id
 + Include Ticket variant
++ Include Cancelled
 
 ## Ticket variant with id and currencies (object)
 + Include Ticket variant id
@@ -851,3 +855,8 @@ FORMAT: 1A
 
 ## 404 Error response (object)
 + errors (array[Error])
+
+## Cancelled (object)
++ `cancelled`
+    + `byUser`: `ca529a7e-d65b-4e6b-a120-eeccc71a1516` (string)
+    + `atDate`: `2017-06-06 12:00:00` (string)
