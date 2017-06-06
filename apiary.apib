@@ -562,123 +562,123 @@ FORMAT: 1A
 
 # Data Structures
 ## Licence type (object)
-+ `id`: `962754c0-1201-4cd5-812f-ef616a442445`
-+ `name`: `Basic`
++ `id`: `962754c0-1201-4cd5-812f-ef616a442445` (string, required)
++ `name`: `Basic` (string, required)
 
 ## Licence type with details (Licence type)
-+ `prices` (array[Price])
++ `prices` (array[Price], required)
 
 ## Currency (object)
-+ `code`: `CZK` (string)
-+ `local`: `Kč` (string)
++ `code`: `CZK` (string, required)
++ `local`: `Kč` (string, required)
 
 ## Country (object)
-+ `code`: `CZ`
-+ `name`: `Česká Republika`
-+ `internationalName`: `Czech Republic`
-+ `phoneCode`: `+420`
++ `code`: `CZ` (string, required)
++ `name`: `Česká Republika` (string, required)
++ `internationalName`: `Czech Republic` (string, required)
++ `phoneCode`: `+420` (string, required)
 
 ## Price (object)
-+ `amount`: `100` (number)
-+ `currency`: `CZK`
++ `amount`: `100` (number, required)
++ `currency`: `CZK` (string, required)
 
 ## Price 2 (object)
-+ `amount`: `4` (number)
-+ `currency`: `EUR`
++ `amount`: `4` (number, required)
++ `currency`: `EUR` (string, required)
 
 ## Licence (object)
-+ `validUntil`: `2018-01-01 23:00:00`
-+ `type` (Licence type)
++ `validUntil`: `2018-01-01 23:00:00` (string, required)
++ `type` (Licence type, required)
 
 ## Licence with id (object)
-+ `id`: `a12b0231-be48-4d40-a69d-d521c159dae9`
++ `id`: `a12b0231-be48-4d40-a69d-d521c159dae9` (string, required)
 + Include Licence
 
 ## User without email (object)
-+ `firstName`: John
-+ `lastName`: Doe
-+ `currency`: EUR
++ `firstName`: John (string, required)
++ `lastName`: Doe (string, required)
++ `currency`: EUR (string, required)
 
 ## User (object)
-+ `email`: info@odbav.to
++ `email`: info@odbav.to (string, required)
 + Include User without email
 
 ## User with id (object)
-+ `id`: `05f5b1a5-38be-4190-90cd-c084806e45e5`
++ `id`: `05f5b1a5-38be-4190-90cd-c084806e45e5` (string, required)
 + Include User
 
 ## User with customer (User with id)
-+ `customer` (Customer with licence)
++ `customer` (Customer with licence, required)
 
 ## Customer (object)
-+ `name`: Odbav.to
++ `name`: Odbav.to (string, required)
 + include Billing info
 
 ## Customer with id (object)
-+ `id`: `aa32a9d3-9aaf-4b73-96ff-6da9cbdc8141`
++ `id`: `aa32a9d3-9aaf-4b73-96ff-6da9cbdc8141` (string, required)
 + Include Customer
 
 ## Customer with licence (Customer with id)
-+ `licence` (Licence with id)
++ `licence` (Licence with id, required)
 
 ## Company (object)
-+ `subjectId`: `28994124`
-+ `subjectVatId`: `CZ12345678`
-+ `subject`: `Velveth International Corporation s.r.o.`
-+ `street`: `Slezská 1669/58`
-+ `city`: `Praha`
-+ `postalCode`: `12000`
-+ `countryCode`: `CZ`
++ `subjectId`: `28994124` (string, required)
++ `subjectVatId`: `CZ12345678` (string, required)
++ `subject`: `Velveth International Corporation s.r.o.` (string, required)
++ `street`: `Slezská 1669/58` (string, required)
++ `city`: `Praha` (string, required)
++ `postalCode`: `12000` (string, required)
++ `countryCode`: `CZ` (string, required)
 
 ## Billing info (object)
-+ `subject`: `Odbav.to`
-+ `subjectId`: `12345`
-+ `subjectVatId`: `CZ12345`
-+ `street`: `Anonymous 123`
-+ `city`: `Prague`
-+ `countryCode`: `CZ`
-+ `postalCode`: `11000`
-+ `accountNumber`: `233432765`
-+ `bankCode`: `0600`
-+ `iban`: `CZ6508000000192000145399`
-+ `bic`: `SWIFTBIC`
++ `subject`: `Odbav.to` (string, required)
++ `subjectId`: `12345` (string, required)
++ `subjectVatId`: `CZ12345` (string, required)
++ `street`: `Anonymous 123` (string, required)
++ `city`: `Prague` (string, required)
++ `countryCode`: `CZ` (string, required)
++ `postalCode`: `11000` (string, required)
++ `accountNumber`: `233432765` (string, required)
++ `bankCode`: `0600` (string, required)
++ `iban`: `CZ6508000000192000145399` (string, required)
++ `bic`: `SWIFTBIC` (string, required)
 
 ## Translation (object)
-+ `key`: `hello-world`
-+ `translation`: `Lorem ipsum dolor sit amet`
++ `key`: `hello-world` (string, required)
++ `translation`: `Lorem ipsum dolor sit amet` (string, required)
 
 ## Guest (object)
-+ `email`: info@odbav.to
-+ `firstName`: John
-+ `lastName`: Doe
-+ `phone`: `+420123123123`
-+ `companyName`: `Odbav.to`
-+ `companyId`: `12345`
-+ `companyVatId`: `CZ12345`
-+ `street`: `Anonymous 123`
-+ `city`: `Prague`
-+ `countryCode`: `CZ`
-+ `postalCode`: `11000`
++ `email`: info@odbav.to (string, required)
++ `firstName`: John (string, required)
++ `lastName`: Doe (string, required)
++ `phone`: `+420123123123` (string, required)
++ `companyName`: `Odbav.to` (string, required)
++ `companyId`: `12345` (string, required)
++ `companyVatId`: `CZ12345` (string, required)
++ `street`: `Anonymous 123` (string, required)
++ `city`: `Prague` (string, required)
++ `countryCode`: `CZ` (string, required)
++ `postalCode`: `11000` (string, required)
 
 
 ## Ticket id (object)
-+ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea`
++ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string, required)
 
 ## Ticket (object)
-+ `code`: `c084806e45e5`
++ `code`: `c084806e45e5` (string, required)
 + `price` (Price)
-+ `status`: `checkedInA`
++ `status`: `checkedIn` (string, required)
 + `event`
-    + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba`
-    + `name`: `Some event`
+    + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba` (string, required)
+    + `name`: `Some event` (string, required)
     + `variant`
-        + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
-        + `name`: `Some ticket variant`
-+ `guest` (Guest)
+        + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
+        + `name`: `Some ticket variant` (string, required)
++ `guest` (Guest, required)
 
 ## Ticket editation (object)
-+ `price` (Price)
-+ `guest` (Guest)
++ `price` (Price, required)
++ `guest` (Guest, required)
 
 ## Ticket with id (object)
 + Include Ticket id
@@ -686,47 +686,47 @@ FORMAT: 1A
 + Include Cancelled
 
 ## Event day (object)
-+ `start`: `2017-03-01 08:00:00`
-+ `end`: `2017-03-01 20:00:00`
++ `start`: `2017-03-01 08:00:00` (string, required)
++ `end`: `2017-03-01 20:00:00` (string, required)
 
 ## Event day 2 (object)
-+ `start`: `2017-03-02 06:00:00`
-+ `end`: `2017-03-02 15:00:00`
++ `start`: `2017-03-02 06:00:00` (string, required)
++ `end`: `2017-03-02 15:00:00` (string, required) 
 
 ## Event bounds (object)
-+ `north`: `49.209889999` (number)
-+ `east`: `16.603493699999945` (number)
-+ `south`: `49.2098176` (number)
-+ `west`: `16.603102900000067` (number)
++ `north`: `49.209889999` (number, required)
++ `east`: `16.603493699999945` (number, required)
++ `south`: `49.2098176` (number, required)
++ `west`: `16.603102900000067` (number, required)
 
 ## Event location (object)
-+ `fullAddress`: `Some random address`
-+ `street`: `Anonymous 123`
-+ `city`: `Prague`
-+ `countryCode`: `CZ`
-+ `postalCode`: `11000`
-+ `lat`: `49.2098` (number)
-+ `lng`: `16.603` (number)
-+ `bounds` (Event bounds)
++ `fullAddress`: `Some random address` (string, required)
++ `street`: `Anonymous 123` (string, required)
++ `city`: `Prague` (string, required)
++ `countryCode`: `CZ` (string, required)
++ `postalCode`: `11000` (string, required)
++ `lat`: `49.2098` (number, required)
++ `lng`: `16.603` (number, required)
++ `bounds` (Event bounds, required)
 
 ## Event body (object)
-+ `name`: `Some awesome event!`
-+ `placeName`: `Event venue`
-+ `location` (Event location)
-+ `days` (array[Event day, Event day 2])
-+ `organizer`: `ABC promoting ltd`
-+ `description`: `Neat description`
-+ `email`: `info@odbav.to`
-+ `phone`: `+420603123123`
-+ `link`: `http://odbav.to/tickets/events`
++ `name`: `Some awesome event!`(string, required)
++ `placeName`: `Event venue`(string, required)
++ `location` (Event location, required)
++ `days` (array[Event day, Event day 2], required)
++ `organizer`: `ABC promoting ltd` (string, required)
++ `description`: `Neat description` (string, required)
++ `email`: `info@odbav.to` (string, required)
++ `phone`: `+420603123123` (string, required)
++ `link`: `http://odbav.to/tickets/events` (string, required)
 
 
 ## Event id (object)
-+ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce`
++ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
 
 ## Event with variants (object)
 + Include Event body
-+ `variants` (array[Ticket variant])
++ `variants` (array[Ticket variant], required)
 
 ## Event (object)
 + Include Event body
@@ -734,56 +734,56 @@ FORMAT: 1A
 ## Event with id (object)
 + Include Event id
 + Include Event body
-+ `checklist` (Event checklist)
++ `checklist` (Event checklist, required)
 + Include Cancelled
 
 ## Event with id and variants (Event with id)
-+ `variants` (array[Ticket variant with id])
++ `variants` (array[Ticket variant with id], required)
 
 ## Order ticket (array)
-+ `5f470e02-3442-488a-9c2c-804e16520e44`
-+ `5fa7b432-3222-4aaa-942c-80fd5c0e4421`
++ `5f470e02-3442-488a-9c2c-804e16520e44` (string, required)
++ `5fa7b432-3222-4aaa-942c-80fd5c0e4421` (string, required)
 
 ## Order ticket with event info (object)
 + Include Ticket id
-+ `code`: `c084806e45e5`
-+ `price` (Price)
++ `code`: `c084806e45e5` (string, required)
++ `price` (Price, required)
 + `variant`
-    + `id`: `5f470e02-3442-488a-9c2c-804e16520e44`
-    + `name`: `Some variant name`
+    + `id`: `5f470e02-3442-488a-9c2c-804e16520e44` (string, required)
+    + `name`: `Some variant name` (string, required)
     + `event`
         + Include Event id
-        + `name`: `Some event name`
+        + `name`: `Some event name` (string, required)
 
 ## Order (object)
-+ `customer` (Guest)
++ `customer` (Guest, required)
 
 ## Order with id (object)
-+ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f`
-+ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
-+ `status`: `created`
-+ `price` (Price)
++ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string, required)
++ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
++ `status`: `created` (string, required)
++ `price` (Price, required)
 + Include Order
 + Include Cancelled
 
 ## Order with id and ticket variant info
 + Include Order with id
-+ `tickets` (array[Order ticket with event info])
++ `tickets` (array[Order ticket with event info], required)
 
 ## Ticket variant (object)
-+ `name`: `Some ticket variant`
-+ `internalName`: `internal name of ticket variant`
-+ `prices` (array[Price, Price 2])
-+ `amount`: `1000` (number)
-+ `amountLimited`: `true` (boolean)
-+ `sold`: `23` (number)
-+ `remaining`: `15` (number)
-+ `public`: `true` (boolean)
-+ `validDays` (array[Event day, Event day 2])
-+ `img`: `05f5b1a5-38be-4190-90cd-c084806e4555`
++ `name`: `Some ticket variant` (string, required)
++ `internalName`: `internal name of ticket variant` (string, required)
++ `prices` (array[Price, Price 2], required)
++ `amount`: `1000` (number, required)
++ `amountLimited`: `true` (boolean, required)
++ `sold`: `23` (number, required)
++ `remaining`: `15` (number, required)
++ `public`: `true` (boolean, required)
++ `validDays` (array[Event day, Event day 2], required)
++ `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
 
 ## Ticket variant id (object)
-+ `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
++ `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
 
 ## Ticket variant with id (object)
 + Include Ticket variant id
@@ -793,48 +793,48 @@ FORMAT: 1A
 ## Ticket variant with id and currencies (object)
 + Include Ticket variant id
 + Include Ticket variant
-+ `currencies` (array)
++ `currencies` (array, required)
     + `EUR`
     + `CZK`
 
 ## Statistics cashbook (object)
-+ `datetime`: `2017-03-02 06:00:00`
-+ `price` (Price)
-+ `cashdeskId`: `1`
++ `datetime`: `2017-03-02 06:00:00` (string, required)
++ `price` (Price, required)
++ `cashdeskId`: `1` (string, required)
 
 ## Statistics payment (object)
-+ `paymentDate`: `2017-03-02 06:00:00`
-+ `paymentType`: `card`
-+ `paymentNo`: `1(P2)160002402`
-+ `priceTotalCZK`: `100` (number)
-+ `priceNoVatCZK`: `85` (number)
-+ `priceVatCZK`: `15` (number)
-+ `priceInclVatCZK`: `100` (number)
-+ `priceInclVatEUR`: `4` (number)
++ `paymentDate`: `2017-03-02 06:00:00` (string, required)
++ `paymentType`: `card` (string, required)
++ `paymentNo`: `1(P2)160002402` (string, required)
++ `priceTotalCZK`: `100` (number, required)
++ `priceNoVatCZK`: `85` (number, required)
++ `priceVatCZK`: `15` (number, required)
++ `priceInclVatCZK`: `100` (number, required)
++ `priceInclVatEUR`: `4` (number, required)
 
 ## Statistics ticket (object)
-+ `paymentDate`: `2017-03-02 06:00:00`
-+ `paymentType`: `card`
-+ `paymentNo`: `1(P2)160002402`
-+ `ticketNo`: `178718815296`
-+ `priceTotalCZK`: `100` (number)
-+ `priceNoVatCZK`: `85` (number)
-+ `priceVatCZK`: `15` (number)
-+ `priceInclVatCZK`: `100` (number)
-+ `priceInclVatEUR`: `4` (number)
++ `paymentDate`: `2017-03-02 06:00:00` (string, required)
++ `paymentType`: `card` (string, required)
++ `paymentNo`: `1(P2)160002402` (string, required)
++ `ticketNo`: `178718815296` (string, required)
++ `priceTotalCZK`: `100` (number, required)
++ `priceNoVatCZK`: `85` (number, required)
++ `priceVatCZK`: `15` (number, required)
++ `priceInclVatCZK`: `100` (number, required)
++ `priceInclVatEUR`: `4` (number, required)
 
 ## Form type (object)
-+ `type`: `input`
-+ `fieldName: `lorem ipsum`
-+ `type`: `text`
-+ `toggled`: `false`
++ `type`: `input` (string, required)
++ `fieldName: `lorem ipsum` (string, required)
++ `type`: `text` (string, required)
++ `toggled`: `false` (boolean, required)
 
 ## Event checklist (object)
-+ `isReady`: false (boolean)
-+ `ticketVariant`: false (boolean)
-+ `location`: false (boolean)
-+ `date`: false (boolean)
-+ `billingInfo`: false (boolean)
++ `isReady`: false (boolean, required)
++ `ticketVariant`: false (boolean, required)
++ `location`: false (boolean, required)
++ `date`: false (boolean, required)
++ `billingInfo`: false (boolean, required)
 
 ## Error (object)
 + `title`: `Short title of the problem`
