@@ -348,6 +348,25 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Tickets sending [/tickets/send]
+### Send ticket [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `ticketId` (string, required)
+        + `email` (string, required) - Email to which deliver the ticket
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Orders [/orders]
 ### List orders [GET]
 + Request (application/json)
@@ -436,7 +455,43 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
-        
+
+## Invoices sending [/orders/send-invoice]
+### Send invoice for order [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string, required)
+        + `email` (string, required) - Email to which deliver the invoice
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
+## Order tickets sending [/orders/send-tickets]
+### Send all tickets belonging to order [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string, required)
+        + `email` (string, required) - Email to which deliver the tickets
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ## Order detail [/orders/{orderId}]
 ### Order detail [GET]
@@ -475,8 +530,8 @@ FORMAT: 1A
 ### Create transaction and redirect [POST]
 + Request (application/json)
     + Attributes
-        + `successReturnUrl`: `/orders/{orderId}`
-        + `failureReturnUrl`: `/orders/{orderId}`
+        + `successReturnUrl`: `http://odbav.to/some-success-url` (string, required) - Url where user will be returned on successful payment
+        + `failureReturnUrl`: `http://odbav.to/some-failure-url` (string, required) - Url where user will be returned on failed payment
 
 + Response 302 (application/json)
 
