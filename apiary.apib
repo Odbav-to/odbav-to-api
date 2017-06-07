@@ -368,12 +368,11 @@ FORMAT: 1A
     + Attributes (Order)
         + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
         + `currency`: `CZK`
-        + `returnUrl`: `/orders/{orderId}`
         + `tickets` (Order ticket)
 
 + Response 201 (application/json)
-    + Attributes (Order with id and ticket variant info)
-        + `redirect`: `https://some-random-url.com/`
+    + Attributes (Order with id)
+    <!-- + Attributes (Order with id and ticket variant info) -->
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -402,12 +401,11 @@ FORMAT: 1A
     + Attributes (Order)
         + `status`: `paidByCash`
         + `currency`: `CZK`
-        + `returnUrl`: `/orders/{orderId}`
         + `tickets` (Order ticket)
 
 + Response 201 (application/json)
     + Attributes (Order with id)
-        + `redirect`: `https://some-random-url.com/`
+    <!-- + Attributes (Order with id and ticket variant info) -->
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -473,11 +471,12 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
-## Pay order [/orders/{orderId}/pay]
+## Pay order [/orders/{orderId}/card-pay]
 ### Create transaction and redirect [POST]
 + Request (application/json)
     + Attributes
-        + `returnUrl`: `/orders/{orderId}`
+        + `successReturnUrl`: `/orders/{orderId}`
+        + `failureReturnUrl`: `/orders/{orderId}`
 
 + Response 302 (application/json)
 
