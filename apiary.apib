@@ -394,6 +394,7 @@ FORMAT: 1A
 
 + Response 201 (application/json)
     + Attributes (Order with id and ticket variant info)
+        + `payment` (Bank transfer payment)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -500,6 +501,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (Order with id and ticket variant info)
+        + `payment` (Bank transfer payment)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -516,6 +518,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (Order with id and ticket variant info)
+        + `payment` (Bank transfer payment)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -607,6 +610,84 @@ FORMAT: 1A
 + Response 200 (application/json)
     + Attributes (array)
         + (Statistics ticket)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+    
+
+## Discounts of event [/events/{eventId}/discounts]
+### List of discounts [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array[Discount response])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Add discount [POST]
++ Request (application/json)
+    + Attributes (Discount request)
+
++ Response 200 (application/json)
+    + Attributes (Discount response)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
+## Discount [/discounts/{discountId}]
+### Discount detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Discount response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit discount [PUT]
++ Request (application/json)
+    + Attributes (Discount request)
+
++ Response 200 (application/json)
+    + Attributes (Discount response)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)    
+
+## Cancel discount [/discounts/cancel]
+### Cancel discount [POST]
++ Request (application/json)
+    + Attributes
+        + `discountId` (string, required)
+
++ Response 200 (application/json)
+    + Attributes (Discount response)
+    
++ Response 400 (application/json)
+    + Attributes (401 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -915,3 +996,39 @@ FORMAT: 1A
 + `cancelled`
     + `user`: `ca529a7e-d65b-4e6b-a120-eeccc71a1516` (string)
     + `date`: `2017-06-06 12:00:00` (string)
+
+## Bank transfer payment (object)
++ `bankName`: `Fio Banka, a.s.`
++ `variableSymbol`: `123456789`
++ `accountNumber`: `1234567/2010`
++ `iban`: `12312312313`
++ `bic`: `CZ123121313`
+
+## Discount body (object)
++ `name:`: `Discount for students` (string, required)
++ `internalName`: `Student` (string, required)
++ `amountLimited`: true (boolean, required)
++ `amount`: 20 (number, required)
++ `code`: `XYZ` (string, required)
++ `validSince`: `2017-06-06T16:00:00+0100` (string, required)
++ `validUntil`: `2018-06-06T16:00:00+0100` (string, required)
++ `discounts` (array):
+    + (object)
+        + `amount`: 100 (number, required)
+        + `currency`: `CZK` (string, required)
+
+## Discount request (object)
++ Include Discount body
++ `ticketVariants` (array[string])
+    + `12345`
+
+## Discount response (object)
++ `id` (string)
++ Include Discount body
++ `used`: 5 (number)
++ `remaining`: 10 (number)
++ `ticketVariants` (array):
+    + (object)
+        + `variantId`: `12345` (string)
+        + `name`: `Variant name` (string)
+        + `internalName`: `Variant internal name` (string)
