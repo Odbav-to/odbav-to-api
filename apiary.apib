@@ -97,11 +97,11 @@ FORMAT: 1A
         + `code`: `c084806e45e5` (string, required)
 
 + Response 201 (application/json)
-    + Attributes (Ticket with id)
+    + Attributes (Ticket detail)
 
 + Response 400 (application/json)
     + Attributes
-        + `ticket` (Ticket with id)
+        + `ticket` (Ticket detail)
         + Include 400 Error response
 
 + Response 401 (application/json)
@@ -115,11 +115,11 @@ FORMAT: 1A
         + `code`: `c084806e45e5` (string, required)
 
 + Response 201 (application/json)
-    + Attributes (Ticket with id)
+    + Attributes (Ticket detail)
 
 + Response 400 (application/json)
     + Attributes
-        + `ticket` (Ticket with id)
+        + `ticket` (Ticket detail)
         + Include 400 Error response
 
 + Response 401 (application/json)
@@ -200,7 +200,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Ticket variant with id and currencies)
+        + (Ticket variant detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -210,10 +210,10 @@ FORMAT: 1A
 
 ### Create new ticket variant [POST]
 + Request (application/json)
-    + Attributes (Ticket variant)
+    + Attributes (Ticket variant body)
 
 + Response 201 (application/json)
-    + Attributes (Ticket variant with id)
+    + Attributes (Ticket variant detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -247,7 +247,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (Ticket variant with id and currencies)
+    + Attributes (Ticket variant detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -257,10 +257,10 @@ FORMAT: 1A
 
 ### Edit ticket variant [PUT]
 + Request (application/json)
-    + Attributes (Ticket variant)
+    + Attributes (Ticket variant body)
 
 + Response 200 (application/json)
-    + Attributes (Ticket variant with id and currencies)
+    + Attributes (Ticket variant detail)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -278,7 +278,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Ticket with id)
+        + (Ticket detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -293,7 +293,7 @@ FORMAT: 1A
         + `guest` (Guest)
 
 + Response 201 (application/json)
-    + Attributes (Ticket with id)
+    + Attributes (Ticket detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -327,7 +327,7 @@ FORMAT: 1A
 + Request (application/json)
     
 + Response 200 (application/json)
-    + Attributes (Ticket with id)
+    + Attributes (Ticket detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -340,7 +340,7 @@ FORMAT: 1A
     + Attributes (Ticket editation)
         
 + Response 200 (application/json)
-    + Attributes (Ticket with id)
+    + Attributes (Ticket detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -377,7 +377,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Order with id and ticket variant info)
+        + (Order detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -387,14 +387,20 @@ FORMAT: 1A
 
 ### Create order (customer from outside) [POST]
 + Request (application/json)
-    + Attributes (Order)
-        + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
-        + `currency`: `CZK`
+    + Attributes (Order request)
         + `tickets` (Order ticket)
-
+        
 + Response 201 (application/json)
-    + Attributes (Order with id and ticket variant info)
-        + `payment` (Bank transfer payment)
+    + Attributes (Order detail)
+        
++ Request Custom inputs (application/json)
+    + Attributes (Order request)
+        + `tickets` (array[object])
+            + (Order ticket detailed)
+                + `inputs` (array[Custom input request])
+        
++ Response 201 (application/json)
+    + Attributes (Order detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -406,7 +412,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Order with id)
+        + (Order detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -420,13 +426,11 @@ FORMAT: 1A
 
 ### Create order (manual or cashdesk) [POST]
 + Request (application/json)
-    + Attributes (Order)
-        + `status`: `paidByCash`
-        + `currency`: `CZK`
+    + Attributes (Order request)
         + `tickets` (Order ticket)
 
 + Response 201 (application/json)
-    + Attributes (Order with id and ticket variant info)
+    + Attributes (Order detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -500,8 +504,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (Order with id and ticket variant info)
-        + `payment` (Bank transfer payment)
+    + Attributes (Order detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -514,11 +517,10 @@ FORMAT: 1A
 
 ### Edit order [PUT]
 + Request (application/json)
-    + Attributes (Guest)
+    + Attributes (Order request)
 
 + Response 200 (application/json)
-    + Attributes (Order with id and ticket variant info)
-        + `payment` (Bank transfer payment)
+    + Attributes (Order detail)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -586,37 +588,6 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
-
-## Statistics payments [/events/{eventId}/statistics/payments]
-### Get payments [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (array)
-        + (Statistics payment)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-    
-    
-
-## Statistics tickets [/events/{eventId}/statistics/tickets]
-### Get tickets [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (array)
-        + (Statistics ticket)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-    
 
 ## Discounts of event [/events/{eventId}/discounts]
 ### List of discounts [GET]
@@ -796,14 +767,15 @@ FORMAT: 1A
 + `countryCode`: `CZ` (string, required)
 + `postalCode`: `11000` (string, required)
 
-
-## Ticket id (object)
-+ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string, required)
-
-## Ticket (object)
-+ `code`: `c084806e45e5` (string, required)
+## Ticket editation (object)
 + `price` (Price)
-+ `status`: `checkedIn` (string, required)
++ `guest` (Guest, required)
+
+## Ticket detail (object)
++ `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string)
++ `code`: `c084806e45e5` (string)
++ `price` (Price)
++ `status`: `checkedIn` (string)
 + `event`
     + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba` (string, required)
     + `name`: `Some event` (string, required)
@@ -811,15 +783,8 @@ FORMAT: 1A
         + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
         + `name`: `Some ticket variant` (string, required)
 + `guest` (Guest, required)
-
-## Ticket editation (object)
-+ `price` (Price)
-+ `guest` (Guest, required)
-
-## Ticket with id (object)
-+ Include Ticket id
-+ Include Ticket
 + Include Cancelled
++ `inputs` (Custom input value)
 
 ## Event day (object)
 + `start`: `2017-03-01 08:00:00` (string, required)
@@ -860,10 +825,6 @@ FORMAT: 1A
 ## Event id (object)
 + `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
 
-## Event with variants (object)
-+ Include Event body
-+ `variants` (array[Ticket variant], required)
-
 ## Event (object)
 + Include Event body
 
@@ -874,39 +835,70 @@ FORMAT: 1A
 + Include Cancelled
 
 ## Event with id and variants (Event with id)
-+ `variants` (array[Ticket variant with id], required)
++ `variants` (array[Ticket variant detail symplified], required)
 
 ## Order ticket (array)
 + `5f470e02-3442-488a-9c2c-804e16520e44` (string, required)
 + `5fa7b432-3222-4aaa-942c-80fd5c0e4421` (string, required)
 
-## Order ticket with event info (object)
-+ Include Ticket id
-+ `code`: `c084806e45e5` (string, required)
-+ `price` (Price, required)
-+ `variant`
-    + `id`: `5f470e02-3442-488a-9c2c-804e16520e44` (string, required)
-    + `name`: `Some variant name` (string, required)
-    + `event`
-        + Include Event id
-        + `name`: `Some event name` (string, required)
+## Order ticket detailed (object)
++ `ticketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
++ `email`: `info@odbav.to` (string, optional, nullable)
++ `firstName`: `John` (string, optional, nullable)
++ `lastName`: `Doe` (string, optional, nullable)
++ `phone`: `+420123123123` (string, optional, nullable)
++ `companyName` (string, optional, nullable)
++ `companyId` (string, optional, nullable)
++ `companyVatId` (string, optional, nullable)
++ `street` (string, optional, nullable)
++ `city` (string, optional, nullable)
++ `countryCode` (string, optional, nullable)
++ `postalCode` (string, optional, nullable)
 
-## Order (object)
-+ `customer` (Guest, required)
+## Custom input request (object)
++ `inputId`: `1` (string)
++ `value`: `Some value` (string)
 
-## Order with id (object)
-+ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string, required)
-+ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
-+ `status`: `created` (string, required)
-+ `price` (Price, required)
-+ Include Order
+## Custom input value (array)
++ (Custom input request)
+    + `label`: `Some label` (string)
+
+## Custom input response (array)
++ (object)
+    + `id`: `1` (string)
+    + `label`: `Firma kterou zastupujete` (string)
+    + `type`: `text` (string)
+    + `required`: true (boolean)
++ (object)
+    + `id`: `2` (string)
+    + `label`: `Pozice ve firmě` (string)
+    + `type`: `select` (string)
+    + `required`: false (boolean)
+    + `choices` (array)
+        + `a`
+        + `b`
+
+## Order request (Guest)
++ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, optional)
++ `currency`: `CZK` (string, required)
++ `discountCode` (string, optional, nullable)
++ `status` (string, optional, nullable)
+
+
+## Order detail
++ `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string)
++ `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string)
++ `status`: `created` (string)
++ `price` (Price)
++ `customer` (Guest)
 + Include Cancelled
++ `payment` (Bank transfer payment)
++ `tickets` (array[Ticket detail], required)
++ `discount` (object, nullable)
+    + `id` (string)
+    + `code` (string)
 
-## Order with id and ticket variant info
-+ Include Order with id
-+ `tickets` (array[Order ticket with event info], required)
-
-## Ticket variant (object)
+## Ticket variant body (object)
 + `name`: `Some ticket variant` (string, required)
 + `internalName`: `internal name of ticket variant` (string, required)
 + `prices` (array[Price, Price 2], required)
@@ -915,48 +907,19 @@ FORMAT: 1A
 + `public`: `true` (boolean, required)
 + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
 
-## Ticket variant id (object)
+## Ticket variant detail symplified (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
-
-## Ticket variant with id (object)
-+ Include Ticket variant id
-+ Include Ticket variant
-+ Include Cancelled
++ Include Ticket variant body
 + `sold`: `23` (number, required)
 + `remaining`: `15` (number, required)
++ Include Cancelled
 
-## Ticket variant with id and currencies (object)
-+ Include Ticket variant id
-+ Include Ticket variant
-+ `currencies` (array, required)
+## Ticket variant detail (object)
++ Include Ticket variant detail symplified
++ `currencies` (array)
     + `EUR`
     + `CZK`
-
-## Statistics cashbook (object)
-+ `datetime`: `2017-03-02 06:00:00` (string, required)
-+ `price` (Price, required)
-+ `cashdeskId`: `1` (string, required)
-
-## Statistics payment (object)
-+ `paymentDate`: `2017-03-02 06:00:00` (string, required)
-+ `paymentType`: `card` (string, required)
-+ `paymentNo`: `1(P2)160002402` (string, required)
-+ `priceTotalCZK`: `100` (number, required)
-+ `priceNoVatCZK`: `85` (number, required)
-+ `priceVatCZK`: `15` (number, required)
-+ `priceInclVatCZK`: `100` (number, required)
-+ `priceInclVatEUR`: `4` (number, required)
-
-## Statistics ticket (object)
-+ `paymentDate`: `2017-03-02 06:00:00` (string, required)
-+ `paymentType`: `card` (string, required)
-+ `paymentNo`: `1(P2)160002402` (string, required)
-+ `ticketNo`: `178718815296` (string, required)
-+ `priceTotalCZK`: `100` (number, required)
-+ `priceNoVatCZK`: `85` (number, required)
-+ `priceVatCZK`: `15` (number, required)
-+ `priceInclVatCZK`: `100` (number, required)
-+ `priceInclVatEUR`: `4` (number, required)
++ `inputs` (Custom input response)
 
 ## Form type (object)
 + `type`: `input` (string, required)
