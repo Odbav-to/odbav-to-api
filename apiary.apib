@@ -787,7 +787,12 @@ FORMAT: 1A
 ## Ticket detail (object)
 + `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string)
 + `code`: `c084806e45e5` (string)
-+ `price` (Price)
++ `price` (object)
+    + Include Price
+    + `discount`: (object)
+        + `id` (string)
+        + `code` (string)
+        + `amount`: 100 (number)
 + `status`: `checkedIn` (string)
 + `event`
     + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba` (string, required)
@@ -936,7 +941,7 @@ FORMAT: 1A
 
 ## Form type (object)
 + `type`: `input` (string, required)
-+ `fieldName: `lorem ipsum` (string, required)
++ `fieldName`: `lorem ipsum` (string, required)
 + `type`: `text` (string, required)
 + `toggled`: `false` (boolean, required)
 
@@ -981,7 +986,7 @@ FORMAT: 1A
 + `bic`: `CZ123121313`
 
 ## Discount body (object)
-+ `name:`: `Discount for students` (string, required)
++ `name`: `Discount for students` (string, required)
 + `internalName`: `Student` (string, required)
 + `amountLimited`: true (boolean, required)
 + `amount`: 20 (number, required)
