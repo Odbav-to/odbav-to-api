@@ -702,9 +702,14 @@ FORMAT: 1A
 + `amount`: `100` (number, required)
 + `currency`: `CZK` (string, required)
 
-## Price 2 (object)
-+ `amount`: `4` (number, required)
-+ `currency`: `EUR` (string, required)
+## Price with discount (object)
++ `originalAmount`: `200` (number)
++ `amount`: `100` (number)
++ `currency`: `CZK` (string)
++ `discount` (object)
+    + `id` (string)
+    + `code`: `xyz`
+    + `amount`: `100` (number)
 
 ## Licence (object)
 + `validUntil`: `2018-01-01 23:00:00` (string, required)
@@ -787,12 +792,7 @@ FORMAT: 1A
 ## Ticket detail (object)
 + `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string)
 + `code`: `c084806e45e5` (string)
-+ `price` (object)
-    + Include Price
-    + `discount`: (object)
-        + `id` (string)
-        + `code` (string)
-        + `amount`: 100 (number)
++ `price` (Price with discount)
 + `status`: `checkedIn` (string)
 + `event`
     + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba` (string, required)
@@ -907,19 +907,16 @@ FORMAT: 1A
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string)
 + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string)
 + `status`: `created` (string)
-+ `price` (Price)
++ `price` (Price with discount)
 + `customer` (Guest)
 + Include Cancelled
 + `payment` (Bank transfer payment)
 + `tickets` (array[Ticket detail], required)
-+ `discount` (object, nullable)
-    + `id` (string)
-    + `code` (string)
 
 ## Ticket variant body (object)
 + `name`: `Some ticket variant` (string, required)
 + `internalName`: `internal name of ticket variant` (string, required)
-+ `prices` (array[Price, Price 2], required)
++ `prices` (array[Price], required)
 + `amount`: `1000` (number, required)
 + `amountLimited`: `true` (boolean, required)
 + `public`: `true` (boolean, required)
