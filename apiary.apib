@@ -680,6 +680,83 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Ticket inputs of event [/events/{eventId}/ticket-inputs]
+### List of inputs [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array[Ticket input response])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Add ticket input [POST]
++ Request (application/json)
+    + Attributes (Ticket input request)
+
++ Response 200 (application/json)
+    + Attributes (Ticket input response)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+## Ticket input [/ticket-inputs/{inputId}]
+### Ticket input detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Ticket input response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit ticket input [PUT]
++ Request (application/json)
+    + Attributes (Ticket input request)
+
++ Response 200 (application/json)
+    + Attributes (Ticket input response)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)    
+
+## Cancel ticket input [/ticket-inputs/cancel]
+### Cancel ticket input [POST]
++ Request (application/json)
+    + Attributes
+        + `inputId` (string, required)
+
++ Response 200 (application/json)
+    + Attributes (Ticket input response)
+    
++ Response 400 (application/json)
+    + Attributes (401 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 # Data Structures
 ## Licence type (object)
 + `id`: `962754c0-1201-4cd5-812f-ef616a442445` (string, required)
@@ -1011,3 +1088,31 @@ FORMAT: 1A
         + `ticketVariantId`: `12345` (string)
         + `name`: `Variant name` (string)
         + `internalName`: `Variant internal name` (string)
+
+## Ticket input body (object)
++ `type` (enum[string])
+    + Members
+        + `text`
+        + `longText`
+        + `select`
+        + `checkbox`
+        + `radioList`
++ `label`: `What is your name` (string, required)
++ `required`: true (boolean)
++ `choices` (optional, nullable)
+
+
+## Ticket input request (object)
++ Include Ticket input body
++ `ticketVariants` (array[string])
+    + `12345`
+
+## Ticket input response (object)
++ `id` (string)
++ Include Ticket input body
++ `ticketVariants` (array):
+    + (object)
+        + `ticketVariantId`: `12345` (string)
+        + `name`: `Variant name` (string)
+        + `internalName`: `Variant internal name` (string)
++ Include Cancelled
