@@ -1012,6 +1012,7 @@ FORMAT: 1A
 + `currencies` (array)
     + `EUR`
     + `CZK`
++ `hasInputs`: true (boolean)
 + `inputs` (Custom input response)
 
 ## Form type (object)
@@ -1105,14 +1106,14 @@ FORMAT: 1A
 ## Ticket input request (object)
 + Include Ticket input body
 + `ticketVariants` (array[string])
-    + `12345`
+    + `1c11711c-5b1a-11e7-907b-a6006ad3dba0`
 
 ## Ticket input response (object)
-+ `id` (string)
++ `id`: `1c1177e8-5b1a-11e7-907b-a6006ad3dba0` (string)
 + Include Ticket input body
 + `ticketVariants` (array):
     + (object)
-        + `ticketVariantId`: `12345` (string)
+        + `ticketVariantId`: `1c11711c-5b1a-11e7-907b-a6006ad3dba0` (string)
         + `name`: `Variant name` (string)
         + `internalName`: `Variant internal name` (string)
 + Include Cancelled
