@@ -512,6 +512,29 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+
+## Mark order as paid [/orders/mark-as-paid]
+### Mark order as paid [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string, required)
+
++ Response 200 (application/json)
+    + Attributes (Order detail)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Order detail [/orders/{orderId}]
 ### Order detail [GET]
 + Request (application/json)
