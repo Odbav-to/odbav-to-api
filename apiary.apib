@@ -404,6 +404,19 @@ FORMAT: 1A
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
+
+### Delete order [DELETE]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string)
+        
++ Response 204 (application/json)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
     
 
 ## Event orders [/events/{eventId}/orders]
