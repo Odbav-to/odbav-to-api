@@ -792,35 +792,17 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
-## Export orders to CSV [/export/orders/csv]
-### Get file content [GET]
+## Export orders [/export/orders]
+### Get file content [POST]
 + Request (application/json)
-
+    + Attributes (Export content type)
+    
 + Response 200 (text/csv)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export orders to PDF [/export/orders/pdf]
-### Get file content [GET]
-+ Request (application/json)
-
++ Response 200 (application/vnd.ms-excel)
 + Response 200 (application/pdf)
 
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export orders to XLS [/export/orders/xls]
-### Get file content [GET]
-+ Request (application/json)
-
-+ Response 200 (application/vnd.ms-excel)
++ Response 400 (application/json)
+    + Attributes (400 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -828,35 +810,17 @@ FORMAT: 1A
 + Response 403 (application/json)
     + Attributes (403 Error response)
 
-## Export ticket variants to CSV [/export/ticket-variants/csv]
-### Get file content [GET]
+## Export ticket variants [/export/ticket-variants]
+### Get file content [POST]
 + Request (application/json)
-
+    + Attributes (Export content type)
+    
 + Response 200 (text/csv)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export ticket variants to PDF [/export/ticket-variants/pdf]
-### Get file content [GET]
-+ Request (application/json)
-
++ Response 200 (application/vnd.ms-excel)
 + Response 200 (application/pdf)
 
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export ticket variants to XLS [/export/ticket-variants/xls]
-### Get file content [GET]
-+ Request (application/json)
-
-+ Response 200 (application/vnd.ms-excel)
++ Response 400 (application/json)
+    + Attributes (400 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -864,35 +828,17 @@ FORMAT: 1A
 + Response 403 (application/json)
     + Attributes (403 Error response)
 
-## Export tickets to CSV [/export/tickets/csv]
-### Get file content [GET]
+## Export tickets [/export/tickets]
+### Get file content [POST]
 + Request (application/json)
-
+    + Attributes (Export content type)
+    
 + Response 200 (text/csv)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export tickets to PDF [/export/tickets/pdf]
-### Get file content [GET]
-+ Request (application/json)
-
++ Response 200 (application/vnd.ms-excel)
 + Response 200 (application/pdf)
 
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export tickets to XLS [/export/tickets/xls]
-### Get file content [GET]
-+ Request (application/json)
-
-+ Response 200 (application/vnd.ms-excel)
++ Response 400 (application/json)
+    + Attributes (400 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -900,35 +846,17 @@ FORMAT: 1A
 + Response 403 (application/json)
     + Attributes (403 Error response)
 
-## Export discounts to CSV [/export/discounts/csv]
-### Get file content [GET]
+## Export discounts [/export/discounts]
+### Get file content [POST]
 + Request (application/json)
-
+    + Attributes (Export content type)
+    
 + Response 200 (text/csv)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export discounts to PDF [/export/discounts/pdf]
-### Get file content [GET]
-+ Request (application/json)
-
++ Response 200 (application/vnd.ms-excel)
 + Response 200 (application/pdf)
 
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export discounts to XLS [/export/discounts/xls]
-### Get file content [GET]
-+ Request (application/json)
-
-+ Response 200 (application/vnd.ms-excel)
++ Response 400 (application/json)
+    + Attributes (400 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -936,35 +864,17 @@ FORMAT: 1A
 + Response 403 (application/json)
     + Attributes (403 Error response)
 
-## Export statistics to CSV [/export/statistics/csv]
-### Get file content [GET]
+## Export statistics [/export/statistics]
+### Get file content [POST]
 + Request (application/json)
-
+    + Attributes (Export content type)
+    
 + Response 200 (text/csv)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export statistics to PDF [/export/statistics/pdf]
-### Get file content [GET]
-+ Request (application/json)
-
++ Response 200 (application/vnd.ms-excel)
 + Response 200 (application/pdf)
 
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-## Export statistics to XLS [/export/statistics/xls]
-### Get file content [GET]
-+ Request (application/json)
-
-+ Response 200 (application/vnd.ms-excel)
++ Response 400 (application/json)
+    + Attributes (400 Error response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1320,6 +1230,12 @@ FORMAT: 1A
 + `required`: true (boolean)
 + `choices` (optional, nullable)
 
+## Export content type (object)
++ `contentType` (enum[string])
+    + Members
+        + `application/vnd.ms-excel`
+        + `application/pdf`
+        + `text/csv`
 
 ## Ticket input request (object)
 + Include Ticket input body
