@@ -55,6 +55,7 @@ FORMAT: 1A
 ### Update user details [PUT]
 + Request (application/json)
     + Attributes (User without email)
+        + `skipTutorial`: true (boolean)
             
 + Response 200 (application/json)
     + Attributes (User with customer)
@@ -980,6 +981,7 @@ FORMAT: 1A
 + Include User
 
 ## User with customer (User with id)
++ `showTutorial`: true (boolean)
 + `customer` (Customer with licence, required)
 
 ## Customer (object)
