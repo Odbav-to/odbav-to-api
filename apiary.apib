@@ -418,7 +418,7 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
-    
+
 
 ## Event orders [/events/{eventId}/orders]
 ### List event orders [GET]
@@ -475,6 +475,27 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
+
+## Facebook [/events/{eventId}/facebook-connect]
+### Connect event to a facebook page [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `pageId` (string, required)
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 
 ## Invoices sending [/orders/send-invoice]
 ### Send invoice for order [POST]
