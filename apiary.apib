@@ -500,7 +500,8 @@ FORMAT: 1A
 ### Connect event to a facebook page [POST]
 + Request (application/json)
     + Attributes (array)
-        + `395697660571849`
+        + (object)
+            + `pageId`: `395697660571849` (string, required)
 
 + Response 204 (application/json)
 
@@ -1031,7 +1032,6 @@ FORMAT: 1A
 + `firstName`: John (string, required)
 + `lastName`: Doe (string, required)
 + `currency`: EUR (string, required)
-+ `facebookEventId` (string, optional, nullable)
 
 ## User (object)
 + `email`: info@odbav.to (string, required)
