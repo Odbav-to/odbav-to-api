@@ -7,8 +7,9 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (array)
-        + (Translation)
+    + Attributes (object)
+        + `SOME_KEY`: `some text to replace` (string, required)
+        + `ANOTHER_KEY`: `some text to replace` (string, required)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1075,10 +1076,6 @@ FORMAT: 1A
 + `bankCode`: `0600` (string, required)
 + `iban`: `CZ6508000000192000145399` (string, required)
 + `bic`: `SWIFTBIC` (string, required)
-
-## Translation (object)
-+ `key`: `hello-world` (string, required)
-+ `text`: `Lorem ipsum dolor sit amet` (string, required)
 
 ## Guest (object)
 + `email`: info@odbav.to (string, required)
