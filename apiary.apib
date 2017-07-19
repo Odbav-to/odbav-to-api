@@ -352,6 +352,25 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Tickets downloading [/tickets/{ticketId}/download]
+### Download ticket [GET]
++ Request (application/json)
+
++ Response 200 (application/pdf)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Tickets sending [/tickets/send]
 ### Send ticket [POST]
 + Request (application/json)
@@ -624,6 +643,25 @@ FORMAT: 1A
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
+## Order's invoice downloading [/orders/{orderId}/download-invoice]
+### Download order invoice [GET]
++ Request (application/json)
+
++ Response 200 (application/pdf)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
