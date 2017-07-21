@@ -1255,6 +1255,8 @@ FORMAT: 1A
 + `placeName`: `Event venue`(string, required)
 + `location` (Event location, required)
 + `days` (array[Event day, Event day 2], required)
++ `checkInStartLimited`: `true` (boolean, required)
++ `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
 + `organizer`: `ABC promoting ltd` (string, required)
 + `description`: `Neat description` (string, required)
 + `email`: `info@odbav.to` (string, required)
@@ -1354,6 +1356,8 @@ FORMAT: 1A
 + `prices` (array[Price], required)
 + `amount`: `1000` (number, required)
 + `amountLimited`: `true` (boolean, required)
++ `checkInStartLimited`: `true` (boolean, required)
++ `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
 + `public`: `true` (boolean, required)
 + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
 
@@ -1410,7 +1414,7 @@ FORMAT: 1A
 ## Cancelled (object)
 + `cancelled`
     + `user`: `ca529a7e-d65b-4e6b-a120-eeccc71a1516` (string)
-    + `date`: `2017-06-06 12:00:00` (string)
+    + `date`: `2017-06-06T16:00:00+0100` (string)
 
 ## Bank transfer payment (object)
 + `bankName`: `Fio Banka, a.s.`
