@@ -844,6 +844,51 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Event analytics codes [/events/{eventId}/analytics]
+### List of analytics codes [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array[Analytics code response])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Add analytics code [POST]
++ Request (application/json)
+    + Attributes (Analytics code request)
+
++ Response 200 (application/json)
+    + Attributes (Analytics code response)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Delete analytics code [DELETE]
++ Request (application/json)
+    + Attributes (object)
+        + `codeId` (string)
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 ## Statistics of event [/events/{eventId}/statistics]
 ### Statistics [GET]
 + Request (application/json)
@@ -1024,6 +1069,40 @@ FORMAT: 1A
 
 + Response 403 (application/json)
     + Attributes (403 Error response)
+
+## Analytics code [/analytics/{codeId}]
+### Analytics code detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Analytics code response)
+        + `eventId`
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit analytics code [PUT]
++ Request (application/json)
+    + Attributes (Analytics code request)
+
++ Response 200 (application/json)
+    + Attributes (Analytics code response)
+        + `eventId`
+        
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 # Data Structures
 ## Licence type (object)
@@ -1386,6 +1465,20 @@ FORMAT: 1A
         + `application/vnd.ms-excel`
         + `application/pdf`
         + `text/csv`
+
+## Analytics code request (object)
++ `name` (string, required
++ `type` (enum[string], required)
+    + Members
+        + `facebook-pixel`
+        + `seznam-retargeting`
+        + `google-analytics`
+        + `google-ads`
++ `code` (string, required)
+
+## Analytics code response (object)
++ `id`: `1c1177e8-5b1a-11e7-907b-a6006ad3dba0` (string)
++ Include Analytics code request
 
 ## Ticket input request (object)
 + Include Ticket input body
