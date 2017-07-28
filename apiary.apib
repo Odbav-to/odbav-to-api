@@ -200,7 +200,8 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Ticket variant detail)
+        + (Single ticket variant detail)
+        + (Group ticket variant detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -209,11 +210,17 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 ### Create new ticket variant [POST]
-+ Request (application/json)
-    + Attributes (Ticket variant body)
++ Request Single ticket variant (application/json)
+    + Attributes (Single ticket variant body)
 
 + Response 201 (application/json)
-    + Attributes (Ticket variant detail)
+    + Attributes (Single ticket variant detail)
+
++ Request Group ticket variant (application/json)
+    + Attributes (Group ticket variant body)
+
++ Response 201 (application/json)
+    + Attributes (Group ticket variant detail)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -247,7 +254,12 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (Ticket variant detail)
+    + Attributes (Single ticket variant detail)
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Group ticket variant detail)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -256,11 +268,17 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 ### Edit ticket variant [PUT]
-+ Request (application/json)
-    + Attributes (Ticket variant body)
++ Request Single ticket variant (application/json)
+    + Attributes (Single ticket variant body)
 
 + Response 200 (application/json)
-    + Attributes (Ticket variant detail)
+    + Attributes (Single ticket variant detail)
+
++ Request Group ticket variant (application/json)
+    + Attributes (Group ticket variant body)
+
++ Response 200 (application/json)
+    + Attributes (Group ticket variant detail)
         
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -1355,7 +1373,6 @@ FORMAT: 1A
 ## Ticket variant body (object)
 + `name`: `Some ticket variant` (string, required)
 + `internalName`: `internal name of ticket variant` (string, required)
-+ `description`: `description of ticket variant` (string, required)
 + `prices` (array[Price], required)
 + `amount`: `1000` (number, required)
 + `amountLimited`: `true` (boolean, required)
@@ -1363,22 +1380,68 @@ FORMAT: 1A
 + `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
 + `useEventCheckInLimitation`: `true` (boolean, required)
 + `public`: `true` (boolean, required)
+
+## Single ticket variant body (object)
++ `type`: `single` (enum[string])
+    + Members
+        + `single`
+        + `group`
++ `description`: `description of ticket variant` (string, required)
 + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
++ Include Ticket variant body
+
+## Group ticket variant body (object)
++ `type`: `group` (enum[string])
+    + Members
+        + `single`
+        + `group`
++ Include Ticket variant body
++ `subtickets` (array)
+    + (object)
+        + `name`: `Some ticket variant` (string, required)
+        + `internalName`: `internal name of ticket variant` (string, required)
+        + `description`: `Some description of the ticket variant` (string, required)
+        + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
 
 ## Ticket variant detail symplified (object)
 + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
-+ Include Ticket variant body
++ Include Single ticket variant body
 + `sold`: `23` (number, required)
 + `remaining`: `15` (number, required)
 + Include Cancelled
 
-## Ticket variant detail (object)
+## Single ticket variant detail (object)
++ `type`: `single` (enum[string])
+    + Members
+        + `single`
+        + `group`
 + Include Ticket variant detail symplified
 + `currencies` (array)
     + `EUR`
     + `CZK`
 + `inputsEnabled`: true (boolean)
 + `inputs` (Custom input response)
+
+## Group ticket variant detail (object)
++ `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
++ `type`: `group` (enum[string])
+    + Members
+        + `single`
+        + `group`
++ Include Ticket variant body
++ `subtickets` (array)
+    + (object)
+        + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
+        + `name`: `Some ticket variant` (string, required)
+        + `internalName`: `internal name of ticket variant` (string, required)
+        + `description`: `Some description of the ticket variant` (string, required)
+        + `img`: `05f5b1a5-38be-4190-90cd-c084806e4555` (string, required)
+        + `inputsEnabled`: true (boolean)
+        + `inputs` (Custom input response)
++ `sold`: `23` (number, required)
++ `remaining`: `15` (number, required)
++ Include Cancelled
+
 
 ## Form type (object)
 + `type`: `input` (string, required)
