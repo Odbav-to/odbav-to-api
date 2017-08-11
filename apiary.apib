@@ -193,6 +193,31 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Terms and conditions for Event [/events/{eventId}/terms-and-conditions]
+### Terms detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Event terms)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+### Edit Terms [PUT]
++ Request (application/json)
+    + Attributes (Event terms)
+
++ Response 200 (application/json)
+    + Attributes (Event terms)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (404 Error response)
 
 ## Ticket variants [/events/{eventId}/ticket-variants]
 ### List event ticket variants [GET]
@@ -1297,7 +1322,6 @@ FORMAT: 1A
 + Include Event body
 + `checklist` (Event checklist, required)
 + `status`: `ongoing` (string, required)
-+ `discountsEnabled`: true (boolean)
 + Include Cancelled
 
 ## Event with id and variants (Event with id)
@@ -1307,6 +1331,10 @@ FORMAT: 1A
     + `unpaidOrders`: 10 (number)
     + `cancelledOrders`: 10 (number)
     + `guests`: 10 (number)
+
+## Event terms (object)
++ `useCustomTerms`: true (boolean, required)
++ `terms`: `<html> Terms & conditions </html>` (string, required)
 
 ## Order ticket (array)
 + `5f470e02-3442-488a-9c2c-804e16520e44` (string, required)
