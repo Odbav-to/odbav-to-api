@@ -193,6 +193,20 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## SubEvents [/events/{eventId}/sub-events]
+### Create new subEvent [POST]
++ Request (application/json)
+    + Attributes (SubEvent body)
+
++ Response 201 (application/json)
+    + Attributes (Event with id)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
 ## Terms and conditions for Event [/events/{eventId}/terms-and-conditions]
 ### Terms detail [GET]
 + Request (application/json)
@@ -1450,20 +1464,23 @@ FORMAT: 1A
 + `lng`: `16.603` (number, required)
 + `bounds` (Event bounds, required)
 
-## Event body (object)
+## SubEvent body (object)
 + `name`: `Some awesome event!`(string, required)
 + `placeName`: `Event venue`(string, required)
 + `location` (Event location, required)
 + `days` (array[Event day, Event day 2], required)
 + `checkInStartLimited`: `true` (boolean, required)
 + `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
-+ `organizer`: `ABC promoting ltd` (string, required)
 + `description`: `Neat description` (string, required)
++ `timeZone`: `Europe/Prague` (string, optional, nullable)
++ `cancellationPeriod`: 3 (number, nullable, optional)
+
+## Event body (object)
++ Include SubEvent body
++ `organizer`: `ABC promoting ltd` (string, required)
 + `email`: `info@odbav.to` (string, required)
 + `phone`: `+420603123123` (string, required)
 + `link`: `http://odbav.to/tickets/events` (string, required)
-+ `timeZone`: `Europe/Prague` (string, optional, nullable)
-+ `cancellationPeriod`: 3 (number, nullable, optional)
 
 ## Event id (object)
 + `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
