@@ -1525,11 +1525,15 @@ FORMAT: 1A
     + `label`: `Firma kterou zastupujete` (string)
     + `type`: `text` (string)
     + `required`: true (boolean)
+    + `minLength`: 2 (nullable, number)
+    + `maxLength`: 4 (nullable, number)
 + (object)
     + `id`: `2` (string)
     + `label`: `Pozice ve firmě` (string)
     + `type`: `select` (string)
     + `required`: false (boolean)
+    + `minLength`: 2 (nullable, number)
+    + `maxLength`: 4 (nullable, number)
     + `choices` (array)
         + `a`
         + `b`
@@ -1717,6 +1721,8 @@ FORMAT: 1A
 + `label`: `What is your name` (string, required)
 + `required`: true (boolean)
 + `choices` (optional, nullable)
++ `minLength`: 2 (optional, nullable, number)
++ `maxLength`: 4 (optional, nullable, number)
 
 ## Export content type (object)
 + `contentType` (enum[string])
