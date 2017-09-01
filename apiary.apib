@@ -2,7 +2,7 @@ FORMAT: 1A
 
 # Odbav.to
 
-## Translations [/translations]
+## Translations for one exact locale [/translations]
 ### List of translated texts [GET]
 + Request (application/json)
 
@@ -10,6 +10,22 @@ FORMAT: 1A
     + Attributes (object)
         + `SOME_KEY`: `some text to replace` (string, required)
         + `ANOTHER_KEY`: `some text to replace` (string, required)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
+## Translations [/translations/list]
+### List of translated texts [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (object)
+        + `en` (object)
+            + `SOME_KEY`: `some text to replace` (string, required)
+            + `ANOTHER_KEY`: `some text to replace` (string, required)
+        + `cs` (object)
+            + `SOME_KEY`: `some text to replace` (string, required)
+            + `ANOTHER_KEY`: `some text to replace` (string, required)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
