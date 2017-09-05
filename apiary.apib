@@ -481,6 +481,7 @@ FORMAT: 1A
 + Request (application/json)
     + Attributes (Order request)
         + `tickets` (Order ticket)
+        + `groupTickets` (Order Group ticket)
         
 + Response 201 (application/json)
     + Attributes (Order detail)
@@ -489,6 +490,9 @@ FORMAT: 1A
     + Attributes (Order request)
         + `tickets` (array[object])
             + (Order ticket detailed)
+                + `inputs` (array[Custom input request])
+        + `groupTickets` (array[object])
+            + (Order Group ticket detailed)
                 + `inputs` (array[Custom input request])
         
 + Response 201 (application/json)
@@ -1456,6 +1460,10 @@ FORMAT: 1A
 + Include Cancelled
 + `inputs` (Custom input value)
 
+## Group Ticket detail (object)
++ `groupTicketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
++ `subTickets` (array[Ticket detail])
+
 ## Event day (object)
 + `start`: `2017-03-01 08:00:00` (string, required)
 + `end`: `2017-03-01 20:00:00` (string, required)
@@ -1547,6 +1555,14 @@ FORMAT: 1A
 + `countryCode` (string, optional, nullable)
 + `postalCode` (string, optional, nullable)
 
+## Order Group ticket (object)
++ `groupTicketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
++ `subTickets` (Order ticket, required)
+
+## Order Group ticket detailed (object)
++ `groupTicketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
++ `subTickets` (array[Order ticket detailed], required)
+
 ## Custom input request (object)
 + `inputId`: `1` (string)
 + `value`: `Some value` (string)
@@ -1591,6 +1607,7 @@ FORMAT: 1A
 + Include Cancelled
 + `payment` (Bank transfer payment)
 + `tickets` (array[Ticket detail], required)
++ `groupTickets` (array[Group Ticket detail])
 + `canBeMarkedAsPaid`: false (boolean)
 + `canBeDeleted`: false (boolean)
 + `ticketsCanBeSent`: false (boolean)
