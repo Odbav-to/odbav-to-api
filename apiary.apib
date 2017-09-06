@@ -1776,7 +1776,7 @@ FORMAT: 1A
 + `choices` (optional, nullable)
 + `minLength`: 2 (optional, nullable, number)
 + `maxLength`: 4 (optional, nullable, number)
-+ `guestField` (enum[string], nullable)
++ `guestField` (enum[string], nullable, optional)
     + Members
         + `firstName`
         + `lastName`
@@ -1789,6 +1789,12 @@ FORMAT: 1A
         + `city`
         + `countryCode`
         + `postalCode`
++ `validation` (enum[string], nullable, optional)
+    + Members
+        + `email`
+        + `phone`
+        + `url`
+        + `countryCode`
 
 ## Export content type (object)
 + `contentType` (enum[string])
