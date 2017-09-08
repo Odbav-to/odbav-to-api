@@ -469,7 +469,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Order detail)
+        + (Order response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1451,12 +1451,7 @@ FORMAT: 1A
 + `canBeCheckedOut`: true (boolean)
 + `canBeCancelled`: true (boolean)
 + `canBeEdited`: true (boolean)
-+ `event`
-    + `id`: `6bd945c3-8a3e-4e1a-9fd3-2b6a0291eaba` (string, required)
-    + `name`: `Some event` (string, required)
-    + `variant`
-        + `id`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string, required)
-        + `name`: `Some ticket variant` (string, required)
++ `variantName`: `Some ticket variant` (string, required)
 + `guest` (Guest, required)
 + Include Cancelled
 + `inputs` (Custom input value)
@@ -1599,8 +1594,7 @@ FORMAT: 1A
 + `discountCode` (string, optional, nullable)
 + `status` (string, optional, nullable)
 
-
-## Order detail
+## Order response (object)
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string)
 + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string)
 + `status`: `created` (string)
@@ -1608,13 +1602,16 @@ FORMAT: 1A
 + `customer` (Guest)
 + Include Cancelled
 + `payment` (Bank transfer payment)
-+ `tickets` (array[Ticket detail], required)
++ `ticketsCount`: 1 (number)
 + `groupTickets` (array[Group Ticket detail])
 + `canBeMarkedAsPaid`: false (boolean)
 + `canBeDeleted`: false (boolean)
 + `canBeEdited`: false (boolean)
 + `ticketsCanBeSent`: false (boolean)
 + `invoiceCanBeSent`: false (boolean)
+
+## Order detail (Order response)
++ `tickets` (array[Ticket detail], required)
 
 ## Ticket variant body (object)
 + `name`: `Some ticket variant` (string, required)
