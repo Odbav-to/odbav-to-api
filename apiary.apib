@@ -744,6 +744,25 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Order's tickets downloading [/orders/{orderId}/download-tickets]
+### Download order tickets [GET]
++ Request (application/json)
+
++ Response 200 (application/pdf)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Pay order [/orders/{orderId}/payment-gateway]
 ### Create transaction and redirect [POST]
 + Request (application/json)
