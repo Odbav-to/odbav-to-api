@@ -351,7 +351,7 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Ticket detail)
+        + (Ticket response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1444,10 +1444,12 @@ FORMAT: 1A
 + `iban`: `CZ6508000000192000145399` (string, required)
 + `bic`: `SWIFTBIC` (string, required)
 
-## Guest (object)
+## Guest credentials (object)
 + `email`: info@odbav.to (string, required)
 + `firstName`: John (string, required)
 + `lastName`: Doe (string, required)
+
+## Guest (Guest credentials)
 + `phone`: `+420123123123` (string, required)
 + `companyName`: `Odbav.to` (string, required)
 + `companyId`: `12345` (string, required)
@@ -1461,19 +1463,26 @@ FORMAT: 1A
 + `price` (Price)
 + `guest` (Guest, required)
 
-## Ticket detail (object)
+## Ticket response (object)
 + `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string)
 + `code`: `c084806e45e5` (string)
-+ `price` (Price with discount)
 + `status`: `checkedIn` (string)
++ `guest` (Guest credentials)
++ `variantName`: `Some ticket variant` (string)
 + `canBeCheckedIn`: true (boolean)
 + `canBeCheckedOut`: true (boolean)
 + `canBeCancelled`: true (boolean)
 + `canBeEdited`: true (boolean)
-+ `variantName`: `Some ticket variant` (string, required)
-+ `guest` (Guest, required)
 + Include Cancelled
+
+## Ticket detail (Ticket response)
++ `price` (Price with discount)
++ `guest` (Guest)
 + `inputs` (Custom input value)
++ `variant` (object)
+    + `id`: `abc-xyz` (string)
+    + `name`: `Ticket variant name` (string)
++ `variantName` (optional, nullable)
 
 ## Group Ticket detail (object)
 + `groupTicketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
@@ -1618,7 +1627,7 @@ FORMAT: 1A
 + `eventId`: `fed4cb08-2a18-446e-b549-d9e0f768f658` (string)
 + `status`: `created` (string)
 + `price` (Price with discount)
-+ `customer` (Guest)
++ `customer` (Guest credentials)
 + Include Cancelled
 + `payment` (Bank transfer payment)
 + `ticketsCount`: 1 (number)
@@ -1631,6 +1640,7 @@ FORMAT: 1A
 + `ticketsCanBeDownloaded`: true (boolean)
 
 ## Order detail (Order response)
++ `customer` (Guest)
 + `tickets` (array[Ticket detail], required)
 
 ## Ticket variant body (object)
