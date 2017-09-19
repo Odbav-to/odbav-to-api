@@ -991,50 +991,6 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (object)
-        + `orders` (object)
-            + `total`: 100 (number)
-            + `paid`: 50 (number)
-            + `cancelled`: 20 (number)
-            + `unpaid`: 30 (number)
-        + `tickets` (array)
-            + (object)
-                + `ticketVariantId`
-                + `name`: `Some ticket variant`
-                + `sold`: 100 (number)
-                + `remaining`: 20 (number)
-        + `discounts` (array)
-            + (object)
-                + `discountId`
-                + `name`: `Some discount`
-                + `used`: 100 (number)
-                + `remaining`: 20 (number)
-        
-        + `sales` (object)
-            + `discounted` (array)
-                + (object)
-                    + `currency`: `CZK` (string)
-                    + `amount`: 5000 (number)
-            + `revenues` (array)
-                + (object)
-                    + `currency`: `CZK` (string)
-                    + `amount`: 10000 (number)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-+ Response 403 (application/json)
-    + Attributes (403 Error response)
-
-+ Response 404 (application/json)
-    + Attributes (404 Error response)
-
-
-## Statistics of event v2 [/v2/events/{eventId}/statistics]
-### Statistics [GET]
-+ Request (application/json)
-
-+ Response 200 (application/json)
-    + Attributes (object)
         + `discounts` (object)
             + `totallyDiscounted` (array)
                 + (object)
