@@ -81,31 +81,6 @@ FORMAT: 1A
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
-## Users [/users]
-### List all users of same customer [GET]
-+ Request (application/json)
-
-+ Response 200 (appication/json)
-    + Attributes (array)
-        + (User with id)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
-### Add new user to a customer [POST]
-+ Request (application/json)
-    + Attributes (User)
-        + `password` (nullable) - password will be generated automatically if null
-
-+ Response 201 (application/json)
-    + Attributes (User with id)
-            
-+ Response 400 (application/json)
-    + Attributes (400 Error response)
-
-+ Response 401 (application/json)
-    + Attributes (401 Error response)
-
 ## Check in [/check-in]
 ### Check code for check in [POST]
 + Request (application/json)
