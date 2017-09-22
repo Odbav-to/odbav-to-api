@@ -338,7 +338,7 @@ FORMAT: 1A
 + Request (application/json)
     + Attributes (object)
         + `variantId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
-        + `guest` (Guest)
+        + `inputs` (array[Custom input request])
 
 + Response 201 (application/json)
     + Attributes (Ticket detail)
@@ -1522,7 +1522,7 @@ FORMAT: 1A
 + `subTickets` (array[Order ticket detailed], required)
 
 ## Custom input request (object)
-+ `inputId`: `1` (string)
++ `id`: `1` (string)
 + `value`: `Some value` (string)
 
 ## Custom input value (array)
