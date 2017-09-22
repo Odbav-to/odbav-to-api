@@ -338,6 +338,7 @@ FORMAT: 1A
 + Request (application/json)
     + Attributes (object)
         + `variantId`: `fed4cb08-2a18-446e-b549-d9e0f768f658`
+        + `guest` (Guest)
         + `inputs` (array[Custom input request])
 
 + Response 201 (application/json)
@@ -1393,6 +1394,7 @@ FORMAT: 1A
 ## Ticket editation (object)
 + `price` (Price)
 + `guest` (Guest, required)
++ `inputs` (array[Custom input request])
 
 ## Ticket response (object)
 + `id`: `86cc42db-b22e-4005-99eb-6faf03b41aea` (string)
@@ -1523,6 +1525,7 @@ FORMAT: 1A
 
 ## Custom input request (object)
 + `id`: `1` (string)
++ ``
 + `value`: `Some value` (string)
 
 ## Custom input value (array)
