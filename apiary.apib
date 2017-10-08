@@ -260,7 +260,21 @@ FORMAT: 1A
     
 + Response 404 (application/json)
     + Attributes (404 Error response)
-    
+
+
+## Ticket code detail [/events/{eventId}/tickets/{ticketCode}]
+### Ticket detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Ticket detail)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 
 ## Cancel ticket variant [/ticket-variants/cancel]
 ### Cancel ticket variant [POST]
@@ -1529,7 +1543,6 @@ FORMAT: 1A
 
 ## Custom input request (object)
 + `id`: `1` (string)
-+ ``
 + `value`: `Some value` (string)
 
 ## Custom input value (array)
