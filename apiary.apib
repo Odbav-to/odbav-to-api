@@ -119,6 +119,24 @@ FORMAT: 1A
     + Attributes (401 Error response)
 
 
+## Zone check [/zone-check]
+### Check code for zone access [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `zoneId`: `xxx` (string, required)
+        + `code`: `c084806e45e5` (string, required)
+
++ Response 201 (application/json)
+    + Attributes (Ticket detail)
+
++ Response 400 (application/json)
+    + Attributes
+        + `ticket` (Ticket detail)
+        + Include 400 Error response
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+
 ## Events [/events]
 ### List events [GET]
 + Request (application/json)
@@ -997,6 +1015,19 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Event zones [/events/{eventId}/zones]
+### List of zones [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (array[Zone response])
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 ## Statistics of event [/events/{eventId}/statistics]
 ### Statistics [GET]
 + Request (application/json)
@@ -1321,6 +1352,19 @@ FORMAT: 1A
 + Response 404 (application/json)
     + Attributes (404 Error response)
 
+## Zones [/zones/{zoneId}]
+### Zone detail [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Zone detail)
+
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
 # Data Structures
 ## Licence type (object)
 + `id`: `962754c0-1201-4cd5-812f-ef616a442445` (string, required)
@@ -1528,6 +1572,7 @@ FORMAT: 1A
 
 ## Event with id and variants (Event with id)
 + `variants` (array[Ticket variant detail symplified], required)
++ `zonesEnabled`: true
 + `statistics` (object)
     + `paidOrders`: 10 (number)
     + `unpaidOrders`: 10 (number)
@@ -1838,3 +1883,16 @@ FORMAT: 1A
         + `name`: `Variant name` (string)
         + `internalName`: `Variant internal name` (string)
 + Include Cancelled
+
+## Zone response (object)
++ `id`: `1c1177e8-5b1a-11e7-907b-a6006ad3dba0` (string)
++ `name`: `Zone name`
+
+## Zone detail (Zone response)
++ `allowedCodes` (array[string])
+    + `asdfasdfafd`
+    + `fdsafdsf`
+
+## Zone check request (object)
++ `zoneId`: `1c1177e8-5b1a-11e7-907b-a6006ad3dba0` (string, required)
++ `code`: `asdfasdfasd` (string, required)
