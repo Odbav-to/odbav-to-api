@@ -1502,6 +1502,7 @@ FORMAT: 1A
     + `id`: `abc-xyz` (string)
     + `name`: `Ticket variant name` (string)
 + `variantName` (optional, nullable)
++ `printBadgeAutomatically`: true
 
 ## Group Ticket detail (object)
 + `groupTicketVariantId`: `5f470e02-3442-488a-9c2c-804e16520e44` (string)
@@ -1664,7 +1665,7 @@ FORMAT: 1A
 + `customer` (Guest)
 + `tickets` (array[Ticket detail], required)
 + `receiptCanBeDownloaded`: true
-+ `downloadBadgesAutomatically`: true
++ `printBadgeAutomatically`: true
 
 ## Ticket variant body (object)
 + `name`: `Some ticket variant` (string, required)
