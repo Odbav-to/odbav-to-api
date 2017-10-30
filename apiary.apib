@@ -1643,6 +1643,11 @@ FORMAT: 1A
 + `currency`: `CZK` (string, required)
 + `discountCode` (string, optional, nullable)
 + `status` (string, optional, nullable)
++ `paymentMethod`: `credit_card` (enum[string])
+    + Members
+        + `bank_transfer`
+        + `credit_card`
+        + `deposit_invoice`
 
 ## Order response (object)
 + `id`: `7c9a8379-8fba-48d9-b5b6-146b4083e01f` (string)
