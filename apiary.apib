@@ -812,6 +812,10 @@ FORMAT: 1A
     + Attributes
         + `orderId`: `1234` (string, required)
         + `returnUrl`: `http://tickets.odbav.to/payment-status` (string, required)
+        + `paymentMethod`: `credit_card` (enum[string])
+            + Members
+                + `bank_transfer`
+                + `credit_card`
 
 + Response 201 (application/json)
     + Attributes
