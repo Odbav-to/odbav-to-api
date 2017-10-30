@@ -805,6 +805,29 @@ FORMAT: 1A
 + Response 400 (application/json)
     + Attributes (400 Error response)
 
+
+## Order payment status [/orders/{orderId}/payments/{paymentId}]
+### Get order payment status [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Order detail)
+        + `paymentSuccess`: false (boolean)
+        + `paymentErrors` (array)
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Company info [/company-info/{companyId}]
 ### Retrieve info from public registry [GET]
 + Request (application/json)
