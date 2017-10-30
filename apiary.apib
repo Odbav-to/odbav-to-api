@@ -806,6 +806,27 @@ FORMAT: 1A
     + Attributes (400 Error response)
 
 
+## Order payments [/orders/payments]
+### Create order credit card payment URL [POST]
++ Request (application/json)
+    + Attributes
+        + `orderId`: `1234` (string, required)
+        + `returnUrl`: `http://tickets.odbav.to/payment-status` (string, required)
+
++ Response 201 (application/json)
+    + Attributes
+        + `gatewayUrl`: `https://gw.sandbox.gopay.com/gw/v3/f5858e8ea0d3c20c6d8b6bc6b488e5d8`
+
++ Response 400 (application/json)
+    + Attributes (400 Error response)
+
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Order payment status [/orders/{orderId}/payments/{paymentId}]
 ### Get order payment status [GET]
 + Request (application/json)
