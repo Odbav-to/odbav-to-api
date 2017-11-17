@@ -994,7 +994,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (array[Ticket input response])
+    + Attributes (array[Ticket input list response])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1906,9 +1906,13 @@ FORMAT: 1A
         + `select`
         + `checkbox`
         + `radioList`
-+ `label`: `What is your name` (string, required)
++ `label` (object)
+    + `cs`: `CS label`
+    + `en`: `EN label`
 + `required`: true (boolean)
 + `choices` (optional, nullable)
+    + `cs` (array)
+    + `en` (array)
 + `minLength`: 2 (optional, nullable, number)
 + `maxLength`: 4 (optional, nullable, number)
 + `guestField` (enum[string], nullable, optional)
@@ -1966,6 +1970,11 @@ FORMAT: 1A
         + `name`: `Variant name` (string)
         + `internalName`: `Variant internal name` (string)
 + Include Cancelled
+
+## Ticket input list response (Ticket input response)
++ `label`: `CS label`
++ `choices` (array)
+
 
 ## Zone response (object)
 + `id`: `1c1177e8-5b1a-11e7-907b-a6006ad3dba0` (string)
