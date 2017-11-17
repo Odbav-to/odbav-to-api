@@ -143,17 +143,17 @@ FORMAT: 1A
 
 + Response 200 (application/json)
     + Attributes (array)
-        + (Event with id)
+        + (Event list response)
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
 
 ### Create new event [POST]
 + Request (application/json)
-    + Attributes (Event)
+    + Attributes (Event request)
 
 + Response 201 (application/json)
-    + Attributes (Event with id)
+    + Attributes (Event detail response)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -183,7 +183,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (Event with id and variants)
+    + Attributes (Event detail response)
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -193,10 +193,10 @@ FORMAT: 1A
 
 ### Edit event details [PUT]
 + Request (application/json)
-    + Attributes (Event body)
+    + Attributes (Event request)
 
 + Response 200 (application/json)
-    + Attributes (Event with id)
+    + Attributes (Event detail response)
         
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -210,7 +210,7 @@ FORMAT: 1A
     + Attributes (SubEvent body)
 
 + Response 201 (application/json)
-    + Attributes (Event with id)
+    + Attributes (Event detail response)
 
 + Response 400 (application/json)
     + Attributes (400 Error response)
@@ -1560,10 +1560,6 @@ FORMAT: 1A
 + `start`: `2017-03-01 08:00:00` (string, required)
 + `end`: `2017-03-01 20:00:00` (string, required)
 
-## Event day 2 (object)
-+ `start`: `2017-03-02 06:00:00` (string, required)
-+ `end`: `2017-03-02 15:00:00` (string, required) 
-
 ## Event bounds (object)
 + `north`: `49.209889999` (number, required)
 + `east`: `16.603493699999945` (number, required)
@@ -1584,49 +1580,75 @@ FORMAT: 1A
 + `name`: `Some awesome event!`(string, required)
 + `placeName`: `Event venue`(string, required)
 + `location` (Event location, required)
-+ `days` (array[Event day, Event day 2], required)
++ `days` (array[Event day], required)
 + `checkInStartLimited`: `true` (boolean, required)
 + `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
 + `description`: `Neat description` (string, required)
 + `timeZone`: `Europe/Prague` (string, optional, nullable)
 + `cancellationPeriod`: 3 (number, nullable, optional)
 
-## Event body (object)
-+ Include SubEvent body
-+ `organizer`: `ABC promoting ltd` (string, required)
+## Event request (object)
++ `name`
+    + `cs`: `CS name`
+    + `en`: `EN name`
++ `placeName` (object)
+    + `cs`: `CS place name`
+    + `en`: `EN place name`
++ `location` (Event location, required)
++ `days` (array[Event day], required)
++ `description` (object)
+    + `cs`: `CS description`
+    + `en`: `EN description`
++ `organizer` (object)
+    + `cs`: `CS organizer`
+    + `en`: `EN organizer`
 + `email`: `info@odbav.to` (string, required)
 + `phone`: `+420603123123` (string, required)
 + `link`: `http://odbav.to/tickets/events` (string, required)
-
-## Event id (object)
-+ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
-
-## Event (object)
-+ Include Event body
-
-## Event with id (object)
-+ Include Event id
-+ `formUrl` (nullable)
-+ Include Event body
++ `checkInStartLimited`: `true` (boolean, required)
++ `checkInStartsAt`: `2017-06-06T16:00:00+0100` (string, nullable, required)
++ `timeZone`: `Europe/Prague` (string, optional, nullable)
++ `cancellationPeriod`: 3 (number, nullable, optional)
 + `locales` (array)
     + `cs`
     + `en`
+
+## Event list response (object)
++ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
++ `name`: `Some name`
++ `days` (array[Event day], required)
++ `status`: `ongoing` (string, required)
++ `createdAt`: `2017-06-06T16:00:00+0100`
++ `canBeEdited`: true (boolean)
++ Include Cancelled
+
+## Event detail response (object)
++ `id`: `acd2d642-3a72-49ef-9c1b-6b248715f8ce` (string, required)
++ `formUrl` (nullable)
++ Include Event request
 + `checklist` (Event checklist, required)
 + `status`: `ongoing` (string, required)
 + `discountsEnabled`: true (boolean)
 + `analytics` (array[Analytics code response])
 + `canBeEdited`: true (boolean)
 + `canPayWithTransfer`: true (boolean)
-+ Include Cancelled
-
-## Event with id and variants (Event with id)
-+ `variants` (array[Ticket variant detail symplified], required)
-+ `zonesEnabled`: true
++ `createdAt`: `2017-06-06T16:00:00+0100`
++ `discountsEnabled`: true (boolean)
++ `checkInEnabled`: true (boolean)
++ `checkOutEnabled`: true (boolean)
++ `guestListEnabled`: true (boolean)
++ `zonesEnabled`: true (boolean)
++ `saleHasEnded`: false (boolean)
++ `currencies` (array)
+    + `EUR`
+    + `CZK`
 + `statistics` (object)
     + `paidOrders`: 10 (number)
     + `unpaidOrders`: 10 (number)
     + `cancelledOrders`: 10 (number)
     + `guests`: 10 (number)
++ `variants` (array[Ticket variant detail symplified], required)
++ Include Cancelled
 
 ## Event terms (object)
 + `useCustomTerms`: true (boolean, required)
