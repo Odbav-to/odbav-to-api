@@ -903,7 +903,7 @@ FORMAT: 1A
 + Request (application/json)
 
 + Response 200 (application/json)
-    + Attributes (array[Discount response])
+    + Attributes (array[Discount list response])
 
 + Response 401 (application/json)
     + Attributes (401 Error response)
@@ -1865,7 +1865,9 @@ FORMAT: 1A
 + `bic`: `CZ123121313`
 
 ## Discount body (object)
-+ `name`: `Discount for students` (string, required)
++ `name` (object)
+    + `cs`: `CS name`
+    + `en`: `EN name`
 + `internalName`: `Student` (string, required)
 + `amountLimited`: true (boolean, required)
 + `amount`: 20 (number, required)
@@ -1892,6 +1894,9 @@ FORMAT: 1A
         + `ticketVariantId`: `12345` (string)
         + `name`: `Variant name` (string)
         + `internalName`: `Variant internal name` (string)
+
+## Discount list response (Discount response)
++ `name`: `CS discount name`
 
 ## Ticket input body (object)
 + `type` (enum[string])
