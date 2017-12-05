@@ -700,6 +700,25 @@ FORMAT: 1A
     + Attributes (404 Error response)
 
 
+## Reminders sending [/orders/send-payment-reminder]
+### Send payment reminder for order [POST]
++ Request (application/json)
+    + Attributes (object)
+        + `orderId` (string, required)
+        + `email` (string, required) - Email to which deliver the reminder
+
++ Response 204 (application/json)
+    
++ Response 401 (application/json)
+    + Attributes (401 Error response)
+    
++ Response 403 (application/json)
+    + Attributes (403 Error response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Error response)
+
+
 ## Mark order as paid [/orders/mark-as-paid]
 ### Mark order as paid [POST]
 + Request (application/json)
